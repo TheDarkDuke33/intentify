@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Intentify — Decode the real meaning behind any message</title>
+  <meta name="description" content="Analyze texts, emails, dating bios, red flags, and suggested replies." />
+  <style>
+    :root{
+      --bg:#0b1020;
+      --panel:#131a2f;
+      --panel-2:#1a2340;
+      --text:#eef2ff;
+      --muted:#a9b4d0;
+      --line:#2a355c;
+      --accent:#7c3aed;
+      --accent-2:#06b6d4;
+      --good:#22c55e;
+      --warn:#f59e0b;
+      --bad:#ef4444;
+      --shadow:0 20px 60px rgba(0,0,0,.35);
+      --radius:20px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(124,58,237,.22), transparent 28%),
+        radial-gradient(circle at top right, rgba(6,182,212,.18), transparent 22%),
+        linear-gradient(180deg, #0a0f1d 0%, #0b1020 100%);
+      color:var(--text);
+      min-height:100vh;
+    }
+
+    .wrap{
+      width:min(1100px, calc(100% - 32px));
+      margin:32px auto 48px;
+    }
+
+    .hero{
+      text-align:center;
+      margin-bottom:28px;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+      color:#dbe4ff;
+      padding:8px 14px;
+      border-radius:999px;
+      font-size:14px;
+      margin-bottom:18px;
+      backdrop-filter: blur(8px);
+    }
+
+    h1{
+      font-size:clamp(34px, 6vw, 62px);
+      line-height:1.02;
+      margin:0 0 12px;
+      letter-spacing:-0.03em;
+    }
+
+    .sub{
+      color:var(--muted);
+      max-width:760px;
+      margin:0 auto;
+      font-size:clamp(16px,2vw,19px);
+      line-height:1.6;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:20px;
+      align-items:start;
+    }
+
+    @media (max-width: 920px){
+      .grid{grid-template-columns:1fr}
+    }
+
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+      border:1px solid rgba(255,255,255,.09);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      backdrop-filter: blur(10px);
+    }
+
+    .card-inner{padding:22px}
+
+    .section-title{
+      font-size:15px;
+      color:#c8d3f3;
+      margin:0 0 12px;
+      font-weight:700;
+      letter-spacing:.01em;
+    }
+
+    .controls{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+      margin-bottom:14px;
+    }
+
+    @media (max-width: 680px){
+      .controls{grid-template-columns:1fr}
+    }
+
+    label{
+      display:block;
+      font-size:13px;
+      color:#c4cfed;
+      margin:0 0 8px;
+      font-weight:600;
+    }
+
+    select, textarea, input{
+      width:100%;
+      border:1px solid var(--line);
+      background:var(--panel);
+      color:var(--text);
+      border-radius:14px;
+      padding:14px 14px;
+      outline:none;
+      transition:.18s ease;
+      font:inherit;
+    }
+
+    select:focus, textarea:focus, input:focus{
+      border-color:#6d7fd8;
+      box-shadow:0 0 0 4px rgba(109,127,216,.16);
+    }
+
+    textarea{
+      resize:vertical;
+      min-height:132px;
+      line-height:1.55;
+    }
+
+    .stack{display:grid;gap:14px}
+
+    .row{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      border:none;
+      background:linear-gradient(135deg, var(--accent), var(--accent-2));
+      color:white;
+      padding:14px 18px;
+      border-radius:14px;
+      font-weight:800;
+      cursor:pointer;
+      transition:.18s ease;
+      box-shadow:0 12px 28px rgba(124,58,237,.28);
+    }
+
+    .btn:hover{transform:translateY(-1px)}
+    .btn.secondary{
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.1);
+      color:#e7edff;
+      box-shadow:none;
+    }
+
+    .btn:disabled{
+      opacity:.55;
+      cursor:not-allowed;
+      transform:none;
+    }
+
+    .hint{
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.5;
+    }
+
+    .examples{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:4px;
+    }
+
+    .chip{
+      border:1px solid rgba(255,255,255,.1);
+      background:rgba(255,255,255,.03);
+      color:#dce6ff;
+      padding:9px 12px;
+      border-radius:999px;
+      font-size:12px;
+      cursor:pointer;
+      transition:.15s ease;
+    }
+
+    .chip:hover{
+      background:rgba(255,255,255,.08);
+      transform:translateY(-1px);
+    }
+
+    .result-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-bottom:14px;
+    }
+
+    .result-title{
+      margin:0;
+      font-size:22px;
+      letter-spacing:-0.02em;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      border-radius:999px;
+      padding:8px 12px;
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.01em;
+    }
+
+    .pill.low{background:rgba(34,197,94,.15); color:#8df2ad}
+    .pill.medium{background:rgba(245,158,11,.14); color:#ffd485}
+    .pill.high{background:rgba(239,68,68,.14); color:#ff9b9b}
+
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+      margin:14px 0 18px;
+    }
+
+    @media (max-width: 560px){
+      .stats{grid-template-columns:1fr}
+    }
+
+    .stat{
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:14px;
+    }
+
+    .stat .k{
+      font-size:12px;
+      color:var(--muted);
+      margin-bottom:6px;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:.05em;
+    }
+
+    .stat .v{
+      font-size:20px;
+      font-weight:900;
+      letter-spacing:-0.02em;
+    }
+
+    .bar{
+      height:10px;
+      background:#0f1630;
+      border-radius:999px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.06);
+      margin-top:10px;
+    }
+
+    .bar > span{
+      display:block;
+      height:100%;
+      width:0%;
+      border-radius:999px;
+      background:linear-gradient(90deg, var(--accent), var(--accent-2));
+      transition:width .45s ease;
+    }
+
+    .block{
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:16px;
+      margin-top:12px;
+    }
+
+    .block h3{
+      margin:0 0 10px;
+      font-size:15px;
+      color:#dfe7ff;
+    }
+
+    .block p{
+      margin:0;
+      color:#c5d0ef;
+      line-height:1.65;
+    }
+
+    .reply-list{
+      display:grid;
+      gap:10px;
+      margin-top:10px;
+    }
+
+    .reply{
+      background:#0f1630;
+      border:1px solid #243157;
+      border-radius:14px;
+      padding:13px 14px;
+      color:#edf3ff;
+      line-height:1.55;
+      position:relative;
+    }
+
+    .reply .tag{
+      display:inline-block;
+      font-size:11px;
+      font-weight:800;
+      padding:5px 8px;
+      border-radius:999px;
+      background:rgba(255,255,255,.07);
+      color:#d6e1ff;
+      margin-bottom:8px;
+    }
+
+    .small{
+      font-size:12px;
+      color:var(--muted);
+      line-height:1.5;
+    }
+
+    .hidden{display:none!important}
+    .footer-note{
+      text-align:center;
+      color:#91a0c8;
+      font-size:12px;
+      margin-top:14px;
+    }
+
+    .mono{
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size:12px;
+      color:#aebce0;
+      background:#0f1630;
+      border:1px solid #243157;
+      border-radius:10px;
+      padding:10px 12px;
+      white-space:pre-wrap;
+      line-height:1.45;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="hero">
+      <div class="badge">✨ Intentify beta</div>
+      <h1>Understand what they really mean.</h1>
+      <p class="sub">
+        Analyze texts, emails, and dating bios. Detect tone, intent, red flags, and get smart reply suggestions — instantly.
+      </p>
+    </div>
+
+    <div class="grid">
+      <section class="card">
+        <div class="card-inner">
+          <p class="section-title">Analyzer</p>
+
+          <div class="controls">
+            <div>
+              <label for="context">Context</label>
+              <select id="context">
+                <option value="dating">Dating / Personal</option>
+                <option value="business">Business / Email</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="mode">Mode</label>
+              <select id="mode">
+                <option value="single">Single Message</option>
+                <option value="compare">Compare Two Messages</option>
+                <option value="profile">Dating Profile Analyzer</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="stack">
+            <div id="box1">
+              <label for="message1">Message / Text</label>
+              <textarea id="message1" placeholder="Paste the message, email, or dating bio here..."></textarea>
+            </div>
+
+            <div id="box2" class="hidden">
+              <label for="message2">Second message</label>
+              <textarea id="message2" placeholder="Paste the second message here..."></textarea>
+            </div>
+
+            <div class="row">
+              <button id="analyzeBtn" class="btn" type="button">Decode</button>
+              <button id="clearBtn" class="btn secondary" type="button">Clear</button>
+            </div>
+
+            <div>
+              <div class="small">Quick examples</div>
+              <div class="examples">
+                <button class="chip" type="button" data-example="dating1">Dating excuse</button>
+                <button class="chip" type="button" data-example="dating2">Mixed interest</button>
+                <button class="chip" type="button" data-example="business1">Soft rejection</button>
+                <button class="chip" type="button" data-example="profile1">Dating bio</button>
+              </div>
+            </div>
+
+            <p class="hint">
+              This first version is rule-based, so it works fully static and free. It is useful for launch and validation, not a psychological truth engine.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-inner">
+          <div id="emptyState">
+            <p class="section-title">Results</p>
+            <div class="block">
+              <h3>Ready to decode</h3>
+              <p>Choose a mode, paste your text, and click <strong>Decode</strong>. You’ll get tone, intent, confidence, red flags, and suggested replies.</p>
+            </div>
+            <div class="footer-note">Best for launch-day curiosity and fast public feedback.</div>
+          </div>
+
+          <div id="resultState" class="hidden">
+            <div class="result-head">
+              <h2 class="result-title" id="resultTitle">Analysis</h2>
+              <span id="riskPill" class="pill medium">Red flag risk: Medium</span>
+            </div>
+
+            <div class="stats">
+              <div class="stat">
+                <div class="k">Tone</div>
+                <div class="v" id="toneValue">—</div>
+              </div>
+              <div class="stat">
+                <div class="k">Interest / Receptiveness</div>
+                <div class="v" id="interestValue">—</div>
+              </div>
+              <div class="stat">
+                <div class="k">Confidence</div>
+                <div class="v" id="confidenceValue">—</div>
+                <div class="bar"><span id="confidenceBar"></span></div>
+              </div>
+            </div>
+
+            <div class="block">
+              <h3>Likely meaning</h3>
+              <p id="meaningText">—</p>
+            </div>
+
+            <div class="block">
+              <h3>Signals detected</h3>
+              <p id="signalsText">—</p>
+            </div>
+
+            <div class="block hidden" id="comparisonBlock">
+              <h3>Comparison insight</h3>
+              <p id="comparisonText">—</p>
+            </div>
+
+            <div class="block hidden" id="profileBlock">
+              <h3>Profile score</h3>
+              <p id="profileText">—</p>
+            </div>
+
+            <div class="block">
+              <h3>Suggested replies</h3>
+              <div class="reply-list" id="replyList"></div>
+            </div>
+
+            <div class="row" style="margin-top:14px">
+              <button id="copyBtn" class="btn secondary" type="button">Copy result</button>
+              <button id="shareBtn" class="btn secondary" type="button">Share / Copy link</button>
+            </div>
+
+            <div id="copyOutput" class="mono hidden" style="margin-top:12px"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    const modeEl = document.getElementById('mode');
+    const contextEl = document.getElementById('context');
+    const message1El = document.getElementById('message1');
+    const message2El = document.getElementById('message2');
+    const box2El = document.getElementById('box2');
+    const analyzeBtn = document.getElementById('analyzeBtn');
+    const clearBtn = document.getElementById('clearBtn');
+
+    const emptyState = document.getElementById('emptyState');
+    const resultState = document.getElementById('resultState');
+
+    const resultTitle = document.getElementById('resultTitle');
+    const riskPill = document.getElementById('riskPill');
+    const toneValue = document.getElementById('toneValue');
+    const interestValue = document.getElementById('interestValue');
+    const confidenceValue = document.getElementById('confidenceValue');
+    const confidenceBar = document.getElementById('confidenceBar');
+    const meaningText = document.getElementById('meaningText');
+    const signalsText = document.getElementById('signalsText');
+    const comparisonBlock = document.getElementById('comparisonBlock');
+    const comparisonText = document.getElementById('comparisonText');
+    const profileBlock = document.getElementById('profileBlock');
+    const profileText = document.getElementById('profileText');
+    const replyList = document.getElementById('replyList');
+    const copyBtn = document.getElementById('copyBtn');
+    const shareBtn = document.getElementById('shareBtn');
+    const copyOutput = document.getElementById('copyOutput');
+
+    const examples = {
+      dating1: "I’m really busy this week, maybe another time.",
+      dating2: "I had fun, just been a bit overwhelmed lately.",
+      business1: "Let’s revisit this next quarter when priorities are clearer.",
+      profile1: "Love travel, espresso, gym mornings, and good banter. Looking for someone spontaneous but emotionally mature."
+    };
+
+    modeEl.addEventListener('change', syncMode);
+    analyzeBtn.addEventListener('click', analyze);
+    clearBtn.addEventListener('click', clearAll);
+    copyBtn.addEventListener('click', copyResult);
+    shareBtn.addEventListener('click', shareResult);
+
+    document.querySelectorAll('.chip').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const key = btn.dataset.example;
+        if (key === 'profile1') {
+          modeEl.value = 'profile';
+          contextEl.value = 'dating';
+          syncMode();
+          message1El.value = examples[key];
+        } else {
+          modeEl.value = 'single';
+          contextEl.value = key === 'business1' ? 'business' : 'dating';
+          syncMode();
+          message1El.value = examples[key];
+        }
+      });
+    });
+
+    function syncMode() {
+      const mode = modeEl.value;
+      box2El.classList.toggle('hidden', mode !== 'compare');
+      if (mode === 'profile') {
+        contextEl.value = 'dating';
+        contextEl.disabled = true;
+      } else {
+        contextEl.disabled = false;
+      }
+    }
+
+    function clearAll() {
+      message1El.value = '';
+      message2El.value = '';
+      copyOutput.classList.add('hidden');
+      copyOutput.textContent = '';
+      emptyState.classList.remove('hidden');
+      resultState.classList.add('hidden');
+    }
+
+    function analyze() {
+      const mode = modeEl.value;
+      const context = contextEl.value;
+      const text1 = message1El.value.trim();
+      const text2 = message2El.value.trim();
+
+      if (!text1) {
+        alert('Paste a message or profile first.');
+        return;
+      }
+      if (mode === 'compare' && !text2) {
+        alert('Paste the second message too.');
+        return;
+      }
+
+      let result;
+      if (mode === 'single') {
+        result = analyzeSingle(text1, context);
+        renderSingle(result, context);
+      } else if (mode === 'compare') {
+        result = analyzeCompare(text1, text2, context);
+        renderCompare(result, context);
+      } else {
+        result = analyzeProfile(text1);
+        renderProfile(result);
+      }
+
+      emptyState.classList.add('hidden');
+      resultState.classList.remove('hidden');
+      copyOutput.classList.add('hidden');
+      copyOutput.textContent = '';
+      window.scrollTo({ top: resultState.getBoundingClientRect().top + window.scrollY - 24, behavior: 'smooth' });
+    }
+
+    function tokenize(text) {
+      return text.toLowerCase();
+    }
+
+    function hasAny(text, arr) {
+      return arr.some(word => text.includes(word));
+    }
+
+    function clamp(n, min, max) {
+      return Math.max(min, Math.min(max, n));
+    }
+
+    function buildReplies(context, tone, interest, risk) {
+      if (context === 'business') {
+        return [
+          { tag: 'Professional', text: "Thanks for the update. Understood — I’m happy to revisit this when timing is better on your side." },
+          { tag: 'Direct', text: "Appreciate the clarity. If priorities change, feel free to reach out and we can continue from there." },
+          { tag: 'Light follow-up', text: "No problem at all. Would it help if I checked back in at a more suitable time?" }
+        ];
+      }
+
+      if (risk === 'High') {
+        return [
+          { tag: 'Boundaried', text: "Got it. I prefer clear communication, so I’ll leave the ball in your court if you want to reconnect." },
+          { tag: 'Calm', text: "No worries. If you’re genuinely interested later, you can let me know." },
+          { tag: 'Direct', text: "Thanks for being honest. I’m looking for something more clear and consistent." }
+        ];
+      }
+
+      if (interest === 'High') {
+        return [
+          { tag: 'Warm', text: "Sounds good — I’d like that. Let me know what day works best for you 😊" },
+          { tag: 'Playful', text: "Okay, I’ll allow it this time 😄 Pick a day next week and we’ll make it happen." },
+          { tag: 'Balanced', text: "No problem. Reach out when things calm down and we’ll set something up." }
+        ];
+      }
+
+      return [
+        { tag: 'Friendly', text: "No worries — let me know when you’re free and we’ll see if timing works." },
+        { tag: 'Playful', text: "Busy people are mysterious. I’ll expect a better offer next time 😄" },
+        { tag: 'Direct', text: "Got it. If you want to reschedule at some point, let me know." }
+      ];
+    }
+
+    function analyzeSingle(text, context) {
+      const t = tokenize(text);
+
+      const avoidance = ['maybe another time', 'busy this week', 'crazy week', 'sometime', 'we’ll see', 'not sure', 'next quarter', 'revisit', 'later', 'right now'];
+      const warmth = ['love', 'definitely', 'sounds great', 'excited', 'would love', 'looking forward', 'can’t wait'];
+      const distance = ['maybe', 'if', 'possibly', 'perhaps', 'not ready', 'hard right now'];
+      const apology = ['sorry', 'apologize'];
+      const directNo = ['not interested', 'don’t think', 'no thanks', 'can’t do this'];
+      const manipulation = ['if you really cared', 'prove it', 'you always', 'you never', 'fine.', 'whatever'];
+
+      let score = 50;
+      let confidence = 74;
+      let tone = 'Neutral';
+      let interest = 'Medium';
+      let risk = 'Low';
+      let signalBits = [];
+
+      if (hasAny(t, avoidance)) { score -= 16; confidence += 6; signalBits.push('delay / soft deferral'); }
+      if (hasAny(t, distance))  { score -= 10; confidence += 4; signalBits.push('indirect language'); }
+      if (hasAny(t, directNo))  { score -= 28; confidence += 10; signalBits.push('explicit rejection'); }
+      if (hasAny(t, warmth))    { score += 18; confidence += 5; signalBits.push('warm / engaged wording'); }
+      if (hasAny(t, apology))   { confidence += 2; signalBits.push('social cushioning'); }
+      if (hasAny(t, manipulation)) { risk = 'High'; confidence += 8; signalBits.push('pressure / manipulative framing'); }
+
+      if (context === 'business') {
+        if (t.includes('next quarter') || t.includes('priorities') || t.includes('circle back')) {
+          score -= 14;
+          signalBits.push('strategic postponement');
+        }
+        if (t.includes('let’s') || t.includes('happy to') || t.includes('appreciate')) {
+          score += 8;
+          signalBits.push('professional politeness');
+        }
+      }
+
+      score = clamp(score, 5, 95);
+      confidence = clamp(confidence, 62, 96);
+
+      if (hasAny(t, manipulation) || t.includes('whatever')) tone = 'Passive-aggressive';
+      else if (score <= 28) tone = 'Avoidant';
+      else if (score >= 72) tone = 'Open';
+      else if (apology.some(a => t.includes(a)) || hasAny(t, avoidance)) tone = 'Polite';
+      else tone = 'Neutral';
+
+      if (score <= 30) interest = 'Low';
+      else if (score >= 70) interest = 'High';
+      else interest = 'Medium';
+
+      if (risk !== 'High') {
+        if (tone === 'Passive-aggressive') risk = 'High';
+        else if (tone === 'Avoidant') risk = 'Medium';
+        else risk = 'Low';
+      }
+
+      let meaning;
+      if (context === 'business') {
+        if (interest === 'Low') {
+          meaning = 'This likely means the sender does not see this as a current priority and is using polite delay language instead of giving a hard no.';
+        } else if (interest === 'High') {
+          meaning = 'This looks receptive. The sender appears open, but may still be pacing the conversation professionally.';
+        } else {
+          meaning = 'This appears cautious but not fully closed. There is some openness, but no clear urgency yet.';
+        }
+      } else {
+        if (interest === 'Low') {
+          meaning = 'This most likely reads as polite distancing: not necessarily hostile, but probably not strong romantic momentum right now.';
+        } else if (interest === 'High') {
+          meaning = 'This reads as engaged and receptive. There are positive signals that suggest genuine interest or openness.';
+        } else {
+          meaning = 'This feels mixed. The sender is not fully closing the door, but the message is not strongly investing either.';
+        }
+      }
+
+      return {
+        mode: 'single',
+        tone,
+        interest,
+        confidence,
+        risk,
+        meaning,
+        signals: signalBits.length ? signalBits.join(' • ') : 'no strong signals detected',
+        replies: buildReplies(context, tone, interest, risk)
+      };
+    }
+
+    function analyzeCompare(text1, text2, context) {
+      const a = analyzeSingle(text1, context);
+      const b = analyzeSingle(text2, context);
+
+      let comparison = '';
+      const map = { Low: 1, Medium: 2, High: 3 };
+      if (map[b.interest] > map[a.interest]) {
+        comparison = 'Message B reads as more open and receptive than Message A.';
+      } else if (map[b.interest] < map[a.interest]) {
+        comparison = 'Message A reads as more open and receptive than Message B.';
+      } else {
+        comparison = 'Both messages sit at a similar receptiveness level, so the difference is more about tone than intent.';
+      }
+
+      if (a.risk === 'High' || b.risk === 'High') {
+        comparison += ' At least one message also shows elevated red-flag signals, so proceed carefully.';
+      }
+
+      return {
+        mode: 'compare',
+        a,
+        b,
+        comparison
+      };
+    }
+
+    function analyzeProfile(text) {
+      const t = tokenize(text);
+      let score = 58;
+      let confidence = 78;
+      let tone = 'Open';
+      let interest = 'Medium';
+      let risk = 'Low';
+
+      const positives = ['travel', 'gym', 'banter', 'funny', 'kind', 'adventure', 'coffee', 'wine', 'music', 'honest', 'mature', 'spontaneous'];
+      const negatives = ['drama', 'don’t waste my time', 'must be', 'if you can’t handle', 'swipe left', 'entertain me'];
+      const serious = ['relationship', 'mature', 'intentional', 'genuine', 'long-term'];
+      const casual = ['fun', 'vibes', 'see what happens', 'short-term', 'casual'];
+
+      positives.forEach(word => { if (t.includes(word)) score += 4; });
+      negatives.forEach(word => { if (t.includes(word)) score -= 9; });
+      serious.forEach(word => { if (t.includes(word)) score += 3; });
+      casual.forEach(word => { if (t.includes(word)) score += 1; });
+
+      score = clamp(score, 25, 95);
+
+      if (hasAny(t, negatives)) {
+        risk = 'Medium';
+        tone = 'Guarded';
+      } else if (score >= 76) {
+        tone = 'Attractive / balanced';
+      } else if (score >= 60) {
+        tone = 'Open / social';
+      } else {
+        tone = 'Neutral';
+      }
+
+      if (t.includes('relationship') || t.includes('long-term') || t.includes('genuine')) {
+        interest = 'High';
+      } else if (t.includes('casual') || t.includes('fun') || t.includes('see what happens')) {
+        interest = 'Medium';
+      } else {
+        interest = 'Medium';
+      }
+
+      let meaning = 'This profile gives a reasonably clear sense of personality and dating vibe.';
+      if (score >= 76) meaning = 'This profile is likely to perform well: it feels social, specific, and readable without sounding try-hard.';
+      if (score < 55) meaning = 'This profile may feel generic or guarded. It likely needs more specificity, warmth, or a clearer vibe.';
+
+      let signals = [];
+      if (hasAny(t, positives)) signals.push('specific interests');
+      if (hasAny(t, serious)) signals.push('maturity / commitment language');
+      if (hasAny(t, casual)) signals.push('casual openness');
+      if (hasAny(t, negatives)) signals.push('guarded / defensive phrasing');
+      if (!signals.length) signals.push('low specificity');
+
+      return {
+        mode: 'profile',
+        tone,
+        interest,
+        confidence,
+        risk,
+        score,
+        meaning,
+        signals: signals.join(' • '),
+        replies: [
+          { tag: 'Bio tip', text: 'Add one concrete detail that someone can easily reply to, like a favorite place, ritual, or unusual preference.' },
+          { tag: 'Improve vibe', text: 'Keep the energy warm and specific. Profiles do better when they sound human, not filtered or defensive.' },
+          { tag: 'Better prompt', text: 'Try ending with a hook like: “Tell me your most controversial coffee opinion.”' }
+        ]
+      };
+    }
+
+    function renderRisk(risk) {
+      riskPill.textContent = 'Red flag risk: ' + risk;
+      riskPill.className = 'pill ' + risk.toLowerCase();
+    }
+
+    function renderReplies(replies) {
+      replyList.innerHTML = '';
+      replies.forEach(r => {
+        const div = document.createElement('div');
+        div.className = 'reply';
+        div.innerHTML = `<div class="tag">${escapeHtml(r.tag)}</div>${escapeHtml(r.text)}`;
+        replyList.appendChild(div);
+      });
+    }
+
+    function renderSingle(r, context) {
+      resultTitle.textContent = context === 'business' ? 'Business message analysis' : 'Message analysis';
+      toneValue.textContent = r.tone;
+      interestValue.textContent = r.interest;
+      confidenceValue.textContent = r.confidence + '%';
+      confidenceBar.style.width = r.confidence + '%';
+      meaningText.textContent = r.meaning;
+      signalsText.textContent = r.signals;
+      renderRisk(r.risk);
+      renderReplies(r.replies);
+      comparisonBlock.classList.add('hidden');
+      profileBlock.classList.add('hidden');
+    }
+
+    function renderCompare(r, context) {
+      resultTitle.textContent = context === 'business' ? 'Business message comparison' : 'Message comparison';
+      toneValue.textContent = `${r.a.tone} vs ${r.b.tone}`;
+      interestValue.textContent = `${r.a.interest} vs ${r.b.interest}`;
+      const avg = Math.round((r.a.confidence + r.b.confidence) / 2);
+      confidenceValue.textContent = avg + '%';
+      confidenceBar.style.width = avg + '%';
+      meaningText.textContent = `Message A: ${r.a.meaning} Message B: ${r.b.meaning}`;
+      signalsText.textContent = `A: ${r.a.signals} | B: ${r.b.signals}`;
+      const risk = r.a.risk === 'High' || r.b.risk === 'High' ? 'High' : (r.a.risk === 'Medium' || r.b.risk === 'Medium' ? 'Medium' : 'Low');
+      renderRisk(risk);
+      comparisonText.textContent = r.comparison;
+      comparisonBlock.classList.remove('hidden');
+      profileBlock.classList.add('hidden');
+      renderReplies(buildReplies(context, r.b.tone, r.b.interest, risk));
+    }
+
+    function renderProfile(r) {
+      resultTitle.textContent = 'Dating profile analysis';
+      toneValue.textContent = r.tone;
+      interestValue.textContent = r.interest;
+      confidenceValue.textContent = r.confidence + '%';
+      confidenceBar.style.width = r.confidence + '%';
+      meaningText.textContent = r.meaning;
+      signalsText.textContent = r.signals;
+      renderRisk(r.risk);
+      profileText.textContent = `Profile attractiveness score: ${r.score}/100`;
+      profileBlock.classList.remove('hidden');
+      comparisonBlock.classList.add('hidden');
+      renderReplies(r.replies);
+    }
+
+    function getPlainResult() {
+      const title = resultTitle.textContent;
+      const risk = riskPill.textContent;
+      const tone = toneValue.textContent;
+      const interest = interestValue.textContent;
+      const confidence = confidenceValue.textContent;
+      const meaning = meaningText.textContent;
+      const signals = signalsText.textContent;
+      const replies = [...replyList.querySelectorAll('.reply')].map(el => el.innerText.replace(/\n/g, ' ')).join('\n');
+      return `${title}\n${risk}\nTone: ${tone}\nInterest/Receptiveness: ${interest}\nConfidence: ${confidence}\nLikely meaning: ${meaning}\nSignals: ${signals}\nSuggested replies:\n${replies}`;
+    }
+
+    async function copyResult() {
+      const text = getPlainResult();
+      try {
+        await navigator.clipboard.writeText(text);
+        copyOutput.textContent = 'Copied result:\n\n' + text;
+      } catch {
+        copyOutput.textContent = 'Could not access clipboard automatically. Copy this manually:\n\n' + text;
+      }
+      copyOutput.classList.remove('hidden');
+    }
+
+    async function shareResult() {
+      const text = getPlainResult();
+      const shareText = text + '\n\nTry it: ' + window.location.href;
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: 'Intentify',
+            text: shareText,
+            url: window.location.href
+          });
+          return;
+        } catch {}
+      }
+      try {
+        await navigator.clipboard.writeText(shareText);
+        alert('Share text copied to clipboard.');
+      } catch {
+        alert('Your browser blocked direct sharing. Copy manually from the result box.');
+      }
+    }
+
+    function escapeHtml(str) {
+      return str
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#039;');
+    }
+
+    syncMode();
+  </script>
+</body>
+</html>
