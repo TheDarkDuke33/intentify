@@ -1,0 +1,8 @@
+{
+"name": "Intentify",
+"short_name": "Intentify",
+"start_url": "/intentify/",
+"display": "standalone",
+"background_color": "#060b18",
+"description": "Decode the real meaning behind messages, emails and dating bios."
+}
