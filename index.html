@@ -1,17 +1,46 @@
+bash -lc cat > /mnt/data/intentify_launch_ready.html <<'EOF'
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Intentify — Decode the real meaning behind messages</title>
-  <meta
-    name="description"
-    content="Analyze messages, emails, and dating bios. Detect tone, intent, red flags, and get smart reply suggestions."
-  />
-  <meta
-    name="keywords"
-    content="message analyzer, dating message analyzer, text meaning analyzer, conversation analyzer, dating bio analyzer, message intent"
-  />
+  <meta name="description" content="Analyze messages, emails, and dating bios. Detect tone, intent, red flags, clarity, and get smart reply suggestions — entirely in your browser." />
+  <meta name="keywords" content="message analyzer, dating message analyzer, text meaning analyzer, conversation analyzer, dating bio analyzer, email analyzer, tone detector, intent detector" />
+  <meta name="author" content="TheDarkDuke33" />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#7a5cff" />
+  <meta name="color-scheme" content="dark light" />
+
+  <link rel="canonical" href="https://thedarkduke33.github.io/intentify/" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237a5cff'/%3E%3Cstop offset='1' stop-color='%2312c8ff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='%23060b18'/%3E%3Cpath d='M18 32c0-7.7 6.3-14 14-14h12v8H32a6 6 0 100 12h8v8h-8c-7.7 0-14-6.3-14-14zm14-2h14v4H32z' fill='url(%23g)'/%3E%3C/svg%3E" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://thedarkduke33.github.io/intentify/" />
+  <meta property="og:title" content="Intentify — Decode the real meaning behind messages" />
+  <meta property="og:description" content="Analyze messages, emails, and dating bios. Detect tone, intent, red flags, and get smart reply suggestions." />
+  <meta property="og:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='630' viewBox='0 0 1200 630'%3E%3Cdefs%3E%3ClinearGradient id='bg' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23060b18'/%3E%3Cstop offset='1' stop-color='%230b1530'/%3E%3C/linearGradient%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237a5cff'/%3E%3Cstop offset='1' stop-color='%2312c8ff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='1200' height='630' fill='url(%23bg)'/%3E%3Ccircle cx='200' cy='120' r='180' fill='%237a5cff' fill-opacity='.15'/%3E%3Ccircle cx='1010' cy='110' r='140' fill='%2312c8ff' fill-opacity='.12'/%3E%3Ctext x='90' y='250' fill='white' font-family='Arial,Helvetica,sans-serif' font-size='76' font-weight='700'%3EIntentify%3C/text%3E%3Ctext x='90' y='330' fill='%23d8e4ff' font-family='Arial,Helvetica,sans-serif' font-size='34'%3EDecode the real meaning behind messages%3C/text%3E%3Crect x='90' y='390' width='420' height='88' rx='20' fill='rgba(255,255,255,.06)' stroke='rgba(255,255,255,.14)'/%3E%3Ctext x='120' y='445' fill='url(%23g)' font-family='Arial,Helvetica,sans-serif' font-size='32' font-weight='700'%3ETone • Intent • Red Flags%3C/text%3E%3C/svg%3E" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Intentify — Decode the real meaning behind messages" />
+  <meta name="twitter:description" content="Analyze messages, emails, and dating bios. Detect tone, intent, red flags, and get smart reply suggestions." />
+  <meta name="twitter:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='630' viewBox='0 0 1200 630'%3E%3Crect width='1200' height='630' fill='%23060b18'/%3E%3Ctext x='80' y='250' fill='white' font-family='Arial,Helvetica,sans-serif' font-size='76' font-weight='700'%3EIntentify%3C/text%3E%3Ctext x='80' y='330' fill='%23d8e4ff' font-family='Arial,Helvetica,sans-serif' font-size='34'%3EDecode the real meaning behind messages%3C/text%3E%3C/svg%3E" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Intentify",
+    "applicationCategory": "CommunicationApplication",
+    "operatingSystem": "Web",
+    "url": "https://thedarkduke33.github.io/intentify/",
+    "description": "A lightweight browser-based tool that helps decode the meaning behind messages, emails, and dating bios.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
 
   <style>
     :root {
@@ -19,6 +48,7 @@
       --bg2: #0a1228;
       --panel: rgba(16, 23, 48, 0.92);
       --panel-2: rgba(12, 18, 38, 0.96);
+      --surface: rgba(255,255,255,0.045);
       --line: rgba(255,255,255,0.09);
       --line-strong: rgba(255,255,255,0.14);
       --text: #eef3ff;
@@ -30,31 +60,89 @@
       --red: #ef4444;
       --shadow: 0 22px 60px rgba(0,0,0,0.38);
       --radius: 22px;
+      --focus: 0 0 0 4px rgba(122,92,255,0.2);
     }
 
-    * {
-      box-sizing: border-box;
+    :root[data-theme='light'] {
+      --bg: #edf3ff;
+      --bg2: #ffffff;
+      --panel: rgba(255,255,255,0.86);
+      --panel-2: rgba(245,248,255,0.98);
+      --surface: rgba(10,16,32,0.03);
+      --line: rgba(10,16,32,0.09);
+      --line-strong: rgba(10,16,32,0.14);
+      --text: #0d1730;
+      --muted: #596684;
+      --shadow: 0 20px 50px rgba(36,54,98,0.12);
     }
 
-    html, body {
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
       margin: 0;
-      padding: 0;
       min-height: 100%;
       background:
         radial-gradient(circle at top left, rgba(122,92,255,0.18), transparent 28%),
         radial-gradient(circle at top right, rgba(18,200,255,0.14), transparent 20%),
-        linear-gradient(180deg, var(--bg) 0%, #020713 100%);
+        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
       color: var(--text);
-      font-family: Inter, Arial, Helvetica, sans-serif;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      padding: 24px 0 60px;
     }
 
-    body {
-      padding: 24px 0 40px;
+    img { max-width: 100%; display: block; }
+    button, input, select, textarea { font: inherit; }
+    a { color: inherit; }
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 12px;
+      background: var(--text);
+      color: var(--bg);
+      padding: 10px 14px;
+      border-radius: 10px;
+      z-index: 2000;
     }
+    .skip-link:focus { top: 12px; }
 
     .app {
       width: min(1180px, calc(100% - 28px));
       margin: 0 auto;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .logo {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 10px 30px rgba(122,92,255,0.32);
+      display: grid;
+      place-items: center;
+      color: white;
+      font-size: 18px;
+    }
+
+    .top-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
     }
 
     .hero {
@@ -62,25 +150,24 @@
       margin-bottom: 22px;
     }
 
-    .badge {
+    .badge, .hero-points span, .tag, .mini-tag {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       border: 1px solid var(--line);
       background: rgba(255,255,255,0.04);
-      padding: 10px 16px;
+      padding: 9px 14px;
       border-radius: 999px;
-      font-size: 14px;
-      color: #dfe6ff;
+      font-size: 13px;
+      color: inherit;
       backdrop-filter: blur(10px);
-      margin-bottom: 16px;
     }
 
     h1 {
-      margin: 0 0 12px;
-      font-size: clamp(38px, 7vw, 74px);
-      line-height: 0.98;
-      letter-spacing: -0.045em;
+      margin: 12px 0 12px;
+      font-size: clamp(40px, 7vw, 76px);
+      line-height: 0.97;
+      letter-spacing: -0.05em;
     }
 
     .hero-sub {
@@ -99,29 +186,14 @@
       margin-top: 18px;
     }
 
-    .hero-points span {
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.04);
-      padding: 8px 12px;
-      border-radius: 999px;
-      font-size: 13px;
-      color: #dce6ff;
-    }
-
-    .grid {
+    .quick-proof {
       display: grid;
-      grid-template-columns: 1.08fr 0.92fr;
-      gap: 18px;
-      align-items: start;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin: 26px 0 14px;
     }
 
-    @media (max-width: 960px) {
-      .grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .card {
+    .proof-card, .card, .footer-card, .faq-item, .launch-box {
       background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
       border: 1px solid var(--line);
       border-radius: var(--radius);
@@ -130,41 +202,57 @@
       backdrop-filter: blur(10px);
     }
 
-    .card-inner {
-      padding: 22px;
+    .proof-card {
+      padding: 16px;
+      text-align: left;
     }
 
+    .proof-card strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+
+    .proof-card p {
+      margin: 0;
+      line-height: 1.65;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .card-inner { padding: 22px; }
     .section-title {
       margin: 0 0 14px;
       font-size: 15px;
       font-weight: 800;
       letter-spacing: 0.01em;
-      color: #dfe7ff;
+      color: inherit;
     }
 
-    .stack {
+    .stack { display: grid; gap: 14px; }
+    .control-grid, .feature-grid, .example-grid, .footer-grid {
       display: grid;
-      gap: 14px;
-    }
-
-    .control-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
       gap: 12px;
     }
 
-    @media (max-width: 680px) {
-      .control-grid {
-        grid-template-columns: 1fr;
-      }
-    }
+    .control-grid { grid-template-columns: 1fr 1fr; }
+    .feature-grid { grid-template-columns: repeat(3, 1fr); }
+    .example-grid { grid-template-columns: repeat(3, 1fr); margin-top: 18px; }
+    .footer-grid { grid-template-columns: 1.3fr 1fr 1fr; }
 
     label {
       display: block;
       margin: 0 0 8px;
       font-size: 13px;
       font-weight: 700;
-      color: #cfdaff;
+      color: inherit;
     }
 
     select, textarea, input {
@@ -174,24 +262,36 @@
       color: var(--text);
       border-radius: 16px;
       padding: 14px 14px;
-      font: inherit;
       outline: none;
       transition: 0.18s ease;
     }
 
-    select:focus, textarea:focus, input:focus {
+    select:focus, textarea:focus, input:focus, button:focus-visible, summary:focus-visible {
       border-color: rgba(122,92,255,0.85);
-      box-shadow: 0 0 0 4px rgba(122,92,255,0.16);
+      box-shadow: var(--focus);
+      outline: none;
     }
 
     textarea {
       resize: vertical;
-      min-height: 128px;
+      min-height: 144px;
       line-height: 1.58;
     }
 
-    .hidden {
-      display: none !important;
+    .hidden { display: none !important; }
+
+    .input-meta, .small-note, .launch-copy, .footnote, .counter {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+    .input-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 8px;
+      flex-wrap: wrap;
     }
 
     .button-row {
@@ -201,41 +301,32 @@
     }
 
     .btn {
-      border: none;
+      border: 1px solid transparent;
       border-radius: 14px;
       padding: 13px 18px;
       font-size: 15px;
       font-weight: 800;
       cursor: pointer;
-      transition: transform 0.16s ease, opacity 0.16s ease;
+      transition: transform 0.16s ease, opacity 0.16s ease, background 0.16s ease;
+      min-height: 48px;
     }
 
-    .btn:hover {
-      transform: translateY(-1px);
-    }
-
-    .btn:disabled {
-      opacity: 0.65;
-      cursor: not-allowed;
-      transform: none;
-    }
-
+    .btn:hover { transform: translateY(-1px); }
+    .btn:disabled { opacity: 0.65; cursor: not-allowed; transform: none; }
     .btn-primary {
       color: white;
       background: linear-gradient(135deg, var(--accent), var(--accent-2));
       box-shadow: 0 14px 28px rgba(122,92,255,0.28);
     }
-
-    .btn-secondary {
-      color: white;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid var(--line);
+    .btn-secondary, .btn-ghost {
+      color: inherit;
+      background: rgba(255,255,255,0.06);
+      border-color: var(--line);
     }
-
-    .btn-ghost {
-      color: #dce6ff;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid var(--line);
+    .btn-subtle {
+      color: inherit;
+      background: transparent;
+      border-color: var(--line);
     }
 
     .chips {
@@ -247,30 +338,21 @@
     .chip {
       border: 1px solid var(--line);
       background: rgba(255,255,255,0.04);
-      color: #dce6ff;
+      color: inherit;
       padding: 9px 12px;
       border-radius: 999px;
       font-size: 12px;
       cursor: pointer;
       transition: 0.15s ease;
     }
-
-    .chip:hover {
-      background: rgba(255,255,255,0.1);
-    }
-
-    .hint {
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.6;
-    }
+    .chip:hover, .chip.active { background: rgba(255,255,255,0.1); }
 
     .status-line {
       min-height: 22px;
       display: flex;
       align-items: center;
       gap: 8px;
-      color: #d6e0ff;
+      color: inherit;
       font-size: 13px;
     }
 
@@ -288,30 +370,24 @@
       50% { opacity: 1; transform: scale(1.05); }
     }
 
-    .empty-box, .block {
+    .empty-box, .block, .mini-feature {
       background: rgba(12,18,38,0.82);
+      background: var(--panel-2);
       border: 1px solid var(--line);
       border-radius: 18px;
       padding: 16px;
     }
 
-    .empty-box h3, .block h3 {
+    .empty-box h3, .block h3, .mini-feature h3 {
       margin: 0 0 10px;
       font-size: 16px;
-      color: #e6edff;
+      color: inherit;
     }
 
-    .empty-box p, .block p {
+    .empty-box p, .block p, .mini-feature p {
       margin: 0;
-      color: #cad4f2;
+      color: var(--muted);
       line-height: 1.65;
-    }
-
-    .foot {
-      margin-top: 14px;
-      text-align: center;
-      font-size: 12px;
-      color: #8fa1cf;
     }
 
     .result-head {
@@ -337,37 +413,24 @@
       font-size: 12px;
       font-weight: 800;
       letter-spacing: 0.02em;
+      border: 1px solid transparent;
     }
 
-    .pill.low {
-      background: rgba(34,197,94,0.15);
-      color: #98efb2;
-    }
+    .pill.low { background: rgba(34,197,94,0.15); color: #98efb2; }
+    .pill.medium { background: rgba(245,158,11,0.15); color: #ffd892; }
+    .pill.high { background: rgba(239,68,68,0.15); color: #ffabab; }
 
-    .pill.medium {
-      background: rgba(245,158,11,0.15);
-      color: #ffd892;
-    }
-
-    .pill.high {
-      background: rgba(239,68,68,0.15);
-      color: #ffabab;
-    }
-
-    .stats {
+    .stats, .mini-grid, .score-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
       gap: 12px;
       margin-bottom: 14px;
     }
 
-    @media (max-width: 620px) {
-      .stats {
-        grid-template-columns: 1fr;
-      }
-    }
+    .stats { grid-template-columns: repeat(3, 1fr); }
+    .mini-grid { grid-template-columns: repeat(3, 1fr); }
+    .score-grid { grid-template-columns: repeat(4, 1fr); }
 
-    .stat, .mini {
+    .stat, .mini, .score-card {
       background: var(--panel-2);
       border: 1px solid var(--line);
       border-radius: 16px;
@@ -383,30 +446,13 @@
       font-weight: 800;
     }
 
-    .stat-value {
+    .stat-value, .mini-value, .score-value {
       font-size: 22px;
       font-weight: 900;
       letter-spacing: -0.03em;
     }
 
-    .mini-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-bottom: 14px;
-    }
-
-    @media (max-width: 760px) {
-      .mini-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .mini-value {
-      font-size: 18px;
-      font-weight: 900;
-    }
-
+    .score-value { font-size: 18px; }
     .bar {
       margin-top: 10px;
       height: 10px;
@@ -425,30 +471,49 @@
       transition: width 0.35s ease;
     }
 
-    .reply-list {
+    .reply-list, .example-list {
       display: grid;
       gap: 10px;
       margin-top: 10px;
     }
 
-    .reply {
+    .reply, .example-card {
       background: rgba(255,255,255,0.04);
       border: 1px solid var(--line);
       border-radius: 14px;
       padding: 13px 14px;
-      color: #eef3ff;
+      color: var(--text);
       line-height: 1.58;
+    }
+
+    .reply-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
     }
 
     .reply-tag {
       display: inline-block;
-      margin-bottom: 8px;
       padding: 5px 8px;
       border-radius: 999px;
       font-size: 11px;
       font-weight: 900;
       background: rgba(255,255,255,0.08);
-      color: #dbe6ff;
+      color: inherit;
+    }
+
+    .reply-copy {
+      border: 1px solid var(--line);
+      background: transparent;
+      color: inherit;
+      border-radius: 10px;
+      padding: 6px 10px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 700;
     }
 
     .mono {
@@ -462,57 +527,175 @@
       font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
       font-size: 12px;
       line-height: 1.58;
+      overflow: auto;
+    }
+
+    .example-card strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+
+    .example-card .mini-tag { margin-bottom: 10px; }
+
+    .section {
+      margin-top: 18px;
+    }
+
+    .footer-wrap {
+      margin-top: 24px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .footer-card, .launch-box, .faq-item { padding: 20px; }
+
+    .faq-item summary {
+      cursor: pointer;
+      font-weight: 800;
+      list-style: none;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item p { color: var(--muted); line-height: 1.7; }
+
+    .inline-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .footnote {
+      margin-top: 12px;
+    }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (max-width: 1024px) {
+      .grid, .feature-grid, .example-grid, .footer-grid, .quick-proof { grid-template-columns: 1fr; }
+      .stats, .mini-grid, .score-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 760px) {
+      .control-grid, .stats, .mini-grid, .score-grid { grid-template-columns: 1fr; }
+      .app { width: min(1180px, calc(100% - 18px)); }
+      body { padding-top: 14px; }
+      .card-inner, .footer-card, .launch-box, .faq-item { padding: 16px; }
+      .btn { width: 100%; }
+      .top-actions { width: 100%; }
+      .top-actions .btn { width: auto; flex: 1 1 160px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+      }
     }
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
   <div class="app">
-    <div class="hero">
+    <header class="topbar" aria-label="Top bar">
+      <div class="brand" aria-label="Intentify brand">
+        <div class="logo" aria-hidden="true">✦</div>
+        <div>
+          <div>Intentify</div>
+          <div class="small-note">Beta • browser-based • privacy friendly</div>
+        </div>
+      </div>
+
+      <div class="top-actions">
+        <button id="themeBtn" class="btn btn-subtle" type="button" aria-label="Toggle theme">Toggle theme</button>
+        <button id="scrollToAnalyzerBtn" class="btn btn-secondary" type="button">Open analyzer</button>
+      </div>
+    </header>
+
+    <section class="hero" aria-labelledby="heroTitle">
       <div class="badge">✨ Intentify beta</div>
-      <h1>Understand what they really mean.</h1>
+      <h1 id="heroTitle">Decode the hidden meaning behind any message.</h1>
       <p class="hero-sub">
-        Decode the real meaning behind messages, emails, and dating bios. Detect tone, intent, red flags, and get smart reply suggestions.
+        Paste a message, email, or dating bio. Intentify estimates tone, intent, emotional signals, directness, clarity, and possible red flags — then suggests replies that fit the situation.
       </p>
-      <div class="hero-points">
+      <div class="hero-points" aria-label="Key benefits">
         <span>Detect tone and intent</span>
         <span>Spot hidden red flags</span>
-        <span>Get reply suggestions</span>
+        <span>Get smart reply suggestions</span>
       </div>
-    </div>
 
-    <div class="grid">
-      <section class="card">
+      <div class="quick-proof" aria-label="Examples preview">
+        <article class="proof-card">
+          <strong>Dating excuse</strong>
+          <p>“I’m really busy this week maybe another time.” → Low receptiveness, avoidant tone, polite distancing.</p>
+        </article>
+        <article class="proof-card">
+          <strong>Business email</strong>
+          <p>“Let’s revisit this next quarter.” → Professional, low urgency, likely postponement rather than immediate interest.</p>
+        </article>
+        <article class="proof-card">
+          <strong>Dating bio</strong>
+          <p>Profiles are scored for warmth, clarity, hooks, and defensive phrasing so you can improve them fast.</p>
+        </article>
+      </div>
+    </section>
+
+    <main id="main" class="grid">
+      <section class="card" aria-labelledby="analyzerTitle">
         <div class="card-inner">
-          <p class="section-title">Analyzer</p>
+          <p class="section-title" id="analyzerTitle">Analyzer</p>
 
           <div class="stack">
             <div class="control-grid">
               <div>
                 <label for="context">Context</label>
-                <select id="context">
+                <select id="context" aria-describedby="contextHelp">
                   <option value="dating">Dating / Personal</option>
                   <option value="business">Business / Email</option>
                 </select>
+                <div id="contextHelp" class="small-note">Changes reply style and scoring emphasis.</div>
               </div>
 
               <div>
                 <label for="mode">Mode</label>
-                <select id="mode">
+                <select id="mode" aria-describedby="modeHelp">
                   <option value="single">Single Message</option>
                   <option value="compare">Compare Two Messages</option>
                   <option value="profile">Dating Profile Analyzer</option>
                 </select>
+                <div id="modeHelp" class="small-note">Compare is best when choosing between two similar messages.</div>
               </div>
             </div>
 
             <div>
               <label for="message1">Message / Text</label>
-              <textarea id="message1" placeholder="Paste the message, email, or dating bio here..."></textarea>
+              <textarea id="message1" placeholder="Paste the message, email, or dating bio here..." maxlength="4000" aria-describedby="message1Meta"></textarea>
+              <div class="input-meta" id="message1Meta">
+                <span>Nothing is uploaded. Everything runs in your browser.</span>
+                <span class="counter" id="message1Count">0 / 4000</span>
+              </div>
             </div>
 
             <div id="box2" class="hidden">
               <label for="message2">Second Message</label>
-              <textarea id="message2" placeholder="Paste the second message here..."></textarea>
+              <textarea id="message2" placeholder="Paste the second message here..." maxlength="4000" aria-describedby="message2Meta"></textarea>
+              <div class="input-meta" id="message2Meta">
+                <span>Used only for comparison mode.</span>
+                <span class="counter" id="message2Count">0 / 4000</span>
+              </div>
             </div>
 
             <div class="button-row">
@@ -521,11 +704,11 @@
               <button id="randomBtn" class="btn btn-ghost" type="button">Try random example</button>
             </div>
 
-            <div class="status-line" id="statusLine"></div>
+            <div class="status-line" id="statusLine" aria-live="polite"></div>
 
             <div>
-              <div class="hint" style="margin-bottom:8px;">Quick examples</div>
-              <div class="chips">
+              <div class="small-note" style="margin-bottom:8px;">Quick examples</div>
+              <div class="chips" role="group" aria-label="Example presets">
                 <button class="chip" type="button" data-example="dating1">Dating excuse</button>
                 <button class="chip" type="button" data-example="dating2">Mixed interest</button>
                 <button class="chip" type="button" data-example="business1">Soft rejection</button>
@@ -534,29 +717,40 @@
               </div>
             </div>
 
-            <p class="hint">
-              This free version is rule-based and runs entirely in the browser, so it works on GitHub Pages without any paid API.
-            </p>
+            <div class="feature-grid section" aria-label="Key features">
+              <div class="mini-feature">
+                <h3>Instant results</h3>
+                <p>No signup, no API, no waiting. Works on static hosting.</p>
+              </div>
+              <div class="mini-feature">
+                <h3>Privacy first</h3>
+                <p>Analysis runs locally in the browser. No text is stored on a server.</p>
+              </div>
+              <div class="mini-feature">
+                <h3>Shareable output</h3>
+                <p>Copy results, export JSON, and share analysis text in one click.</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section class="card">
+      <section class="card" aria-labelledby="resultsTitle">
         <div class="card-inner">
           <div id="emptyState">
-            <p class="section-title">Results</p>
+            <p class="section-title" id="resultsTitle">Results</p>
             <div class="empty-box">
               <h3>Ready to decode</h3>
               <p>
-                Choose a mode, paste your text, and click <strong>Decode</strong>. You’ll get tone, interest, confidence, emotion, directness, clarity, detected patterns, explanation, and reply suggestions.
+                Choose a mode, paste your text, and click <strong>Decode</strong>. You’ll get tone, receptiveness, confidence, emotion, directness, clarity, detected patterns, score breakdown, explanation, and reply suggestions.
               </p>
             </div>
-            <div class="foot">
-              Best for testing, feedback, and free launch validation.
+            <div class="footnote">
+              Best for testing, launch validation, and a free browser-first MVP.
             </div>
           </div>
 
-          <div id="resultState" class="hidden">
+          <div id="resultState" class="hidden" aria-live="polite">
             <div class="result-head">
               <h2 class="result-title" id="resultTitle">Analysis</h2>
               <span id="riskPill" class="pill medium">Red flag risk: Medium</span>
@@ -593,6 +787,25 @@
               </div>
             </div>
 
+            <div class="score-grid" aria-label="Score breakdown">
+              <div class="score-card">
+                <div class="stat-key">Warmth</div>
+                <div class="score-value" id="warmthScore">—</div>
+              </div>
+              <div class="score-card">
+                <div class="stat-key">Avoidance</div>
+                <div class="score-value" id="avoidanceScore">—</div>
+              </div>
+              <div class="score-card">
+                <div class="stat-key">Specificity</div>
+                <div class="score-value" id="specificityScore">—</div>
+              </div>
+              <div class="score-card">
+                <div class="stat-key">Pressure</div>
+                <div class="score-value" id="pressureScore">—</div>
+              </div>
+            </div>
+
             <div class="block">
               <h3>Likely meaning</h3>
               <p id="meaningText">—</p>
@@ -625,22 +838,110 @@
 
             <div class="button-row" style="margin-top:14px;">
               <button id="copyBtn" class="btn btn-secondary" type="button">Copy result</button>
-              <button id="shareBtn" class="btn btn-ghost" type="button">Copy share text</button>
+              <button id="shareBtn" class="btn btn-ghost" type="button">Share analysis</button>
+              <button id="exportBtn" class="btn btn-ghost" type="button">Export JSON</button>
             </div>
 
             <div id="copyBox" class="mono hidden"></div>
           </div>
         </div>
       </section>
-    </div>
+    </main>
+
+    <section class="section" aria-labelledby="examplesTitle">
+      <div class="card">
+        <div class="card-inner">
+          <h2 class="section-title" id="examplesTitle">How people use Intentify</h2>
+          <div class="example-grid">
+            <article class="example-card">
+              <span class="mini-tag">Dating</span>
+              <strong>“I’m really busy this week maybe another time.”</strong>
+              <div class="small-note">Typical reading: polite distancing, low commitment, weak next-step clarity.</div>
+            </article>
+            <article class="example-card">
+              <span class="mini-tag">Business</span>
+              <strong>“Let’s revisit this next quarter when priorities are clearer.”</strong>
+              <div class="small-note">Typical reading: low urgency, professional soft decline, delayed priority.</div>
+            </article>
+            <article class="example-card">
+              <span class="mini-tag">Profile</span>
+              <strong>“Gym, coffee, sarcasm, and spontaneous trips.”</strong>
+              <div class="small-note">Typical reading: decent energy, but needs stronger specifics and a conversation hook.</div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="footer-wrap" aria-label="Launch info and footer">
+      <div class="launch-box">
+        <strong>Launch-ready checklist</strong>
+        <div class="launch-copy">This build includes SEO metadata, accessibility improvements, local persistence, deterministic scoring, export tools, better examples, FAQ, privacy messaging, and share support.</div>
+        <div class="inline-list">
+          <span class="tag">No API required</span>
+          <span class="tag">GitHub Pages ready</span>
+          <span class="tag">Accessible controls</span>
+          <span class="tag">Mobile friendly</span>
+        </div>
+      </div>
+
+      <div class="footer-grid">
+        <div class="footer-card">
+          <h3 style="margin-top:0;">About Intentify</h3>
+          <p class="launch-copy">
+            Intentify is a lightweight browser-based message analysis tool for testing, validation, and early launch. It estimates intent using language patterns, not psychology or certainty.
+          </p>
+        </div>
+        <div class="footer-card">
+          <h3 style="margin-top:0;">Privacy</h3>
+          <p class="launch-copy">
+            Your text stays in your browser. The app does not require login and does not send your message to a paid model or external API.
+          </p>
+        </div>
+        <div class="footer-card">
+          <h3 style="margin-top:0;">Disclaimer</h3>
+          <p class="launch-copy">
+            Intentify provides interpretation based on wording patterns. It is not legal, psychological, or professional advice.
+          </p>
+        </div>
+      </div>
+
+      <details class="faq-item">
+        <summary>How accurate is this?</summary>
+        <p>
+          It is a rule-based estimator. It works best for common language patterns like avoidance, receptiveness, soft rejection, and overly defensive phrasing. It should be treated as guidance, not certainty.
+        </p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Does it use AI or store user data?</summary>
+        <p>
+          No external AI is required in this version. Analysis runs locally in the browser, and saved state is limited to your own device via localStorage.
+        </p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Can this be monetized later?</summary>
+        <p>
+          Yes. The clean path is to launch this free browser-first version, validate demand, then add a paid AI mode, screenshot analysis, conversation threads, or premium templates.
+        </p>
+      </details>
+    </section>
   </div>
 
   <script>
+    const STORAGE_KEYS = {
+      state: 'intentify_state_v2',
+      theme: 'intentify_theme_v1'
+    };
+
     const modeEl = document.getElementById('mode');
     const contextEl = document.getElementById('context');
     const message1El = document.getElementById('message1');
     const message2El = document.getElementById('message2');
     const box2El = document.getElementById('box2');
+    const message1Count = document.getElementById('message1Count');
+    const message2Count = document.getElementById('message2Count');
 
     const decodeBtn = document.getElementById('decodeBtn');
     const clearBtn = document.getElementById('clearBtn');
@@ -649,6 +950,8 @@
 
     const emptyState = document.getElementById('emptyState');
     const resultState = document.getElementById('resultState');
+    const themeBtn = document.getElementById('themeBtn');
+    const scrollToAnalyzerBtn = document.getElementById('scrollToAnalyzerBtn');
 
     const resultTitle = document.getElementById('resultTitle');
     const riskPill = document.getElementById('riskPill');
@@ -669,7 +972,14 @@
     const replyList = document.getElementById('replyList');
     const copyBtn = document.getElementById('copyBtn');
     const shareBtn = document.getElementById('shareBtn');
+    const exportBtn = document.getElementById('exportBtn');
     const copyBox = document.getElementById('copyBox');
+    const warmthScore = document.getElementById('warmthScore');
+    const avoidanceScore = document.getElementById('avoidanceScore');
+    const specificityScore = document.getElementById('specificityScore');
+    const pressureScore = document.getElementById('pressureScore');
+
+    let latestResult = null;
 
     const examplePool = {
       dating1: {
@@ -709,16 +1019,38 @@
       { mode: 'compare', context: 'dating', text1: "Let's see how I feel tomorrow.", text2: "Tomorrow might be tough, but I can do Friday." }
     ];
 
+    const PHRASES = {
+      avoidance: ['maybe another time', 'maybe sometime', 'we’ll see', "we'll see", 'not sure', 'kind of crazy', 'busy this week', 'busy right now', 'later', 'sometime', 'let you know', 'see how i feel', 'we should see'],
+      warmth: ['had fun', 'love', 'excited', 'looking forward', 'would love', 'sounds good', 'let’s do', "let's do", 'glad', 'great', 'i’d like that', "i'd like that", 'happy to'],
+      softRejection: ['another time', 'not ready', 'not sure what i want', 'not looking for', 'next quarter', 'circle back', 'revisit this', 'priorities are clearer'],
+      apology: ['sorry', 'apologize', 'apologies'],
+      pressure: ['you never', 'you always', 'if you cared', 'prove it', 'whatever', 'fine.', 'fine then', 'do better'],
+      uncertainty: ['maybe', 'perhaps', 'not sure', 'i think', 'probably', 'might', 'kind of'],
+      emotional: ['overwhelmed', 'drained', 'stressed', 'confused', 'anxious', 'tired'],
+      businessPolite: ['appreciate', 'thank you', 'happy to', 'keep in touch', 'circle back', 'revisit', 'aligned internally', 'priorities'],
+      directPositive: ['yes', 'definitely', 'absolutely', 'for sure', 'can do friday', 'can do', 'let’s do it', "let's do it", 'works for me', 'pick a day'],
+      directNegative: ['no thanks', 'not interested', 'can’t', "can't", 'do not want', 'i am not interested'],
+      specifics: ['friday', 'monday', 'tuesday', 'wednesday', 'thursday', 'saturday', 'sunday', 'next week', 'tomorrow', 'coffee', 'dinner', 'call', 'meeting', 'date', '3pm', '4pm', '5pm', '6pm'],
+      defensiveProfile: ['drama', 'swipe left', 'don’t waste my time', "don't waste my time", 'must be', 'if you can’t handle', "if you can't handle", 'entertain me'],
+      seriousProfile: ['relationship', 'long-term', 'genuine', 'intentional', 'emotionally mature', 'mature'],
+      genericProfile: ['love travel', 'love food', 'gym and travel', 'good vibes', 'fun times']
+    };
+
     function syncMode() {
       const mode = modeEl.value;
       box2El.classList.toggle('hidden', mode !== 'compare');
-
       if (mode === 'profile') {
         contextEl.value = 'dating';
         contextEl.disabled = true;
       } else {
         contextEl.disabled = false;
       }
+      persistState();
+    }
+
+    function updateCounters() {
+      message1Count.textContent = `${message1El.value.length} / 4000`;
+      message2Count.textContent = `${message2El.value.length} / 4000`;
     }
 
     function setStatus(text, loading = false) {
@@ -726,7 +1058,6 @@
         statusLine.innerHTML = '';
         return;
       }
-
       if (loading) {
         statusLine.innerHTML = '<span class="status-dot"></span><span>' + escapeHtml(text) + '</span>';
       } else {
@@ -734,36 +1065,25 @@
       }
     }
 
-    function applyExample(example) {
-      modeEl.value = example.mode;
-      contextEl.value = example.context;
-      syncMode();
-      message1El.value = example.text1 || '';
-      message2El.value = example.text2 || '';
-      setStatus('Example loaded.');
-    }
-
-    function fillRandomExample() {
-      const item = randomExamples[Math.floor(Math.random() * randomExamples.length)];
-      applyExample(item);
-    }
-
-    function clearAll() {
-      message1El.value = '';
-      message2El.value = '';
-      copyBox.classList.add('hidden');
-      copyBox.textContent = '';
-      emptyState.classList.remove('hidden');
-      resultState.classList.add('hidden');
-      setStatus('Cleared.');
-    }
-
     function tokenize(text) {
-      return text.toLowerCase();
+      return text
+        .toLowerCase()
+        .replace(/[\u2018\u2019]/g, "'")
+        .replace(/[\u201C\u201D]/g, '"')
+        .replace(/\s+/g, ' ')
+        .trim();
     }
 
     function hasAny(text, arr) {
       return arr.some(item => text.includes(item));
+    }
+
+    function countMatches(text, arr) {
+      let count = 0;
+      arr.forEach(item => {
+        if (text.includes(item)) count += 1;
+      });
+      return count;
     }
 
     function clamp(n, min, max) {
@@ -776,14 +1096,23 @@
       return 'Medium';
     }
 
-    function confidenceFromScore(base, signalsCount) {
-      return clamp(Math.round(base + signalsCount * 3 + Math.random() * 6), 62, 96);
+    function confidenceFromSignals({ matchedSignals, textLength, specificity }) {
+      const base = 62 + matchedSignals * 4 + Math.min(10, Math.floor(textLength / 80)) + Math.floor(specificity / 8);
+      return clamp(base, 60, 97);
     }
 
     function chooseRisk(level) {
       if (level >= 70) return 'High';
       if (level >= 35) return 'Medium';
       return 'Low';
+    }
+
+    function getScoreBreakdown(text) {
+      const warmth = clamp(countMatches(text, PHRASES.warmth) * 18 + countMatches(text, PHRASES.apology) * 3, 0, 100);
+      const avoidance = clamp(countMatches(text, PHRASES.avoidance) * 20 + countMatches(text, PHRASES.uncertainty) * 10, 0, 100);
+      const specificity = clamp(countMatches(text, PHRASES.specifics) * 16 + (text.length > 120 ? 12 : 0), 0, 100);
+      const pressure = clamp(countMatches(text, PHRASES.pressure) * 45 + countMatches(text, PHRASES.defensiveProfile) * 18, 0, 100);
+      return { warmth, avoidance, specificity, pressure };
     }
 
     function buildReplies(context, interestScore, risk, tone) {
@@ -813,8 +1142,8 @@
 
       if (interestScore >= 70) {
         return [
-          { tag: 'Warm', text: 'Sounds good — I’d like that. Let me know what day works best for you 😊' },
-          { tag: 'Playful', text: 'Okay, I’ll allow it this time 😄 Pick a day next week and we’ll make it happen.' },
+          { tag: 'Warm', text: 'Sounds good — I’d like that. Let me know what day works best for you.' },
+          { tag: 'Playful', text: 'Okay, I’ll allow it this time. Pick a day next week and we’ll make it happen.' },
           { tag: 'Balanced', text: 'No problem. Reach out when things calm down and we’ll set something up.' }
         ];
       }
@@ -822,7 +1151,7 @@
       if (tone === 'Avoidant') {
         return [
           { tag: 'Friendly', text: 'No worries — let me know when you’re genuinely free and we’ll see if timing works.' },
-          { tag: 'Playful', text: 'Busy people are mysterious. I’ll expect a better offer next time 😄' },
+          { tag: 'Playful', text: 'Busy people are mysterious. I’ll expect a better offer next time.' },
           { tag: 'Confident', text: 'Got it. If you want to reschedule at some point, let me know.' }
         ];
       }
@@ -836,19 +1165,7 @@
 
     function analyzeSingle(text, context) {
       const t = tokenize(text);
-
-      const phrases = {
-        avoidance: ['maybe another time', 'maybe sometime', 'we’ll see', "we'll see", 'not sure', 'kind of crazy', 'busy this week', 'busy right now', 'later', 'sometime', 'let you know'],
-        warmth: ['had fun', 'love', 'excited', 'looking forward', 'would love', 'sounds good', 'let’s do', "let's do", 'glad', 'great'],
-        softRejection: ['another time', 'not ready', 'not sure what i want', 'not looking for', 'next quarter', 'circle back', 'revisit this'],
-        apology: ['sorry', 'apologize'],
-        pressure: ['you never', 'you always', 'if you cared', 'prove it', 'whatever', 'fine.'],
-        uncertainty: ['maybe', 'perhaps', 'not sure', 'i think', 'probably'],
-        emotional: ['overwhelmed', 'drained', 'stressed', 'confused'],
-        businessPolite: ['appreciate', 'thank you', 'happy to', 'keep in touch', 'circle back', 'revisit'],
-        directPositive: ['yes', 'definitely', 'absolutely', 'for sure', 'can do friday', 'can do', 'let’s do it', "let's do it"],
-        directNegative: ['no thanks', 'not interested', 'can’t', "can't", 'do not want']
-      };
+      const breakdown = getScoreBreakdown(t);
 
       let interestScore = 50;
       let riskScore = 0;
@@ -859,7 +1176,7 @@
       const found = [];
       const why = [];
 
-      if (hasAny(t, phrases.avoidance)) {
+      if (hasAny(t, PHRASES.avoidance)) {
         interestScore -= 18;
         directnessScore -= 18;
         clarityScore -= 10;
@@ -867,14 +1184,14 @@
         why.push('It contains language that delays commitment without clearly confirming a next step.');
       }
 
-      if (hasAny(t, phrases.softRejection)) {
+      if (hasAny(t, PHRASES.softRejection)) {
         interestScore -= 16;
         clarityScore -= 8;
         found.push('soft rejection signal');
         why.push('It uses phrasing commonly associated with polite distance rather than active momentum.');
       }
 
-      if (hasAny(t, phrases.uncertainty)) {
+      if (hasAny(t, PHRASES.uncertainty)) {
         interestScore -= 8;
         directnessScore -= 12;
         clarityScore -= 10;
@@ -882,20 +1199,20 @@
         why.push('The wording is vague and non-committal, which lowers clarity and directness.');
       }
 
-      if (hasAny(t, phrases.warmth)) {
+      if (hasAny(t, PHRASES.warmth)) {
         interestScore += 18;
         directnessScore += 8;
         found.push('warm / engaged language');
         why.push('It includes positive or engaged wording that usually signals openness.');
       }
 
-      if (hasAny(t, phrases.apology)) {
+      if (hasAny(t, PHRASES.apology)) {
         clarityScore -= 2;
         found.push('social cushioning');
         why.push('Apology language often softens the message and can reduce directness slightly.');
       }
 
-      if (hasAny(t, phrases.pressure)) {
+      if (hasAny(t, PHRASES.pressure)) {
         riskScore += 85;
         directnessScore += 8;
         emotion = 'Defensive';
@@ -903,13 +1220,13 @@
         why.push('It includes emotionally pressuring language, which is a strong red-flag pattern.');
       }
 
-      if (hasAny(t, phrases.emotional)) {
+      if (hasAny(t, PHRASES.emotional)) {
         emotion = 'Overwhelmed';
         found.push('emotional strain');
         why.push('It contains words associated with stress or emotional overload.');
       }
 
-      if (hasAny(t, phrases.directPositive)) {
+      if (hasAny(t, PHRASES.directPositive)) {
         interestScore += 14;
         directnessScore += 18;
         clarityScore += 10;
@@ -917,7 +1234,7 @@
         why.push('It contains direct acceptance or a concrete positive step.');
       }
 
-      if (hasAny(t, phrases.directNegative)) {
+      if (hasAny(t, PHRASES.directNegative)) {
         interestScore -= 28;
         directnessScore += 12;
         clarityScore += 14;
@@ -926,7 +1243,7 @@
       }
 
       if (context === 'business') {
-        if (hasAny(t, phrases.businessPolite)) {
+        if (hasAny(t, PHRASES.businessPolite)) {
           found.push('professional politeness');
           why.push('The message uses professional softening language that is common in business communication.');
           clarityScore -= 3;
@@ -948,24 +1265,25 @@
         clarityScore += 6;
       }
 
-      if (t.includes('?')) {
-        directnessScore += 4;
+      if (breakdown.specificity >= 20) {
+        directnessScore += 8;
+        clarityScore += 8;
+        found.push('specific detail');
+        why.push('Specific timing or action details make the message more concrete.');
       }
+
+      if (t.includes('?')) directnessScore += 4;
 
       interestScore = clamp(Math.round(interestScore), 5, 95);
       directnessScore = clamp(Math.round(directnessScore), 5, 95);
       clarityScore = clamp(Math.round(clarityScore), 5, 95);
 
-      if (riskScore < 35 && hasAny(t, ['whatever', 'fine.', 'sure'])) {
-        riskScore += 35;
-      }
-
-      if (riskScore < 35 && interestScore <= 25 && hasAny(t, phrases.avoidance)) {
-        riskScore += 26;
-      }
+      if (riskScore < 35 && hasAny(t, ['whatever', 'fine.', 'sure'])) riskScore += 35;
+      if (riskScore < 35 && interestScore <= 25 && hasAny(t, PHRASES.avoidance)) riskScore += 26;
+      if (riskScore < 35 && breakdown.pressure > 40) riskScore += 35;
 
       const risk = chooseRisk(riskScore);
-      const confidence = confidenceFromScore(69, found.length);
+      const confidence = confidenceFromSignals({ matchedSignals: found.length, textLength: len, specificity: breakdown.specificity });
 
       if (emotion === 'Neutral') {
         if (interestScore >= 70) emotion = 'Warm';
@@ -975,7 +1293,7 @@
       if (risk === 'High') tone = 'Passive-aggressive';
       else if (interestScore <= 28) tone = 'Avoidant';
       else if (interestScore >= 72) tone = 'Open';
-      else if (hasAny(t, phrases.apology) || hasAny(t, phrases.avoidance)) tone = 'Polite';
+      else if (hasAny(t, PHRASES.apology) || hasAny(t, PHRASES.avoidance)) tone = 'Polite';
       else tone = 'Neutral';
 
       let meaning = '';
@@ -997,11 +1315,11 @@
         }
       }
 
-      const whyText = why.length
-        ? why.join(' ')
+      const whyTextCombined = why.length
+        ? [...new Set(why)].join(' ')
         : 'The result is based on message structure, wording, and whether it offers clarity, commitment, or distance.';
 
-      const patterns = found.length ? found.join(' • ') : 'no strong patterns detected';
+      const patterns = found.length ? [...new Set(found)].join(' • ') : 'no strong patterns detected';
 
       return {
         mode: 'single',
@@ -1017,16 +1335,17 @@
         risk,
         meaning,
         patterns,
-        whyText,
-        replies: buildReplies(context, interestScore, risk, tone)
+        whyText: whyTextCombined,
+        replies: buildReplies(context, interestScore, risk, tone),
+        breakdown
       };
     }
 
     function analyzeCompare(text1, text2, context) {
       const a = analyzeSingle(text1, context);
       const b = analyzeSingle(text2, context);
-
       let comparison = '';
+
       if (b.interestScore > a.interestScore + 10) {
         comparison = 'Message B reads as noticeably more receptive and open than Message A.';
       } else if (a.interestScore > b.interestScore + 10) {
@@ -1045,18 +1364,12 @@
         ? 'High'
         : (a.risk === 'Medium' || b.risk === 'Medium' ? 'Medium' : 'Low');
 
-      return {
-        mode: 'compare',
-        a,
-        b,
-        comparison,
-        overallRisk
-      };
+      return { mode: 'compare', a, b, comparison, overallRisk };
     }
 
     function analyzeProfile(text) {
       const t = tokenize(text);
-
+      const breakdown = getScoreBreakdown(t);
       let profileScore = 58;
       let riskScore = 0;
       let clarityScore = 62;
@@ -1066,9 +1379,6 @@
       const why = [];
 
       const positives = ['travel', 'gym', 'coffee', 'banter', 'music', 'funny', 'kind', 'adventure', 'spontaneous', 'mature', 'honest', 'good conversation', 'sarcasm'];
-      const negatives = ['drama', 'swipe left', 'don’t waste my time', "don't waste my time", 'must be', 'if you can’t handle', "if you can't handle", 'entertain me'];
-      const serious = ['relationship', 'long-term', 'genuine', 'intentional', 'emotionally mature', 'mature'];
-      const generic = ['love travel', 'love food', 'gym and travel', 'good vibes', 'fun times'];
 
       positives.forEach(word => {
         if (t.includes(word)) {
@@ -1077,14 +1387,14 @@
         }
       });
 
-      serious.forEach(word => {
+      PHRASES.seriousProfile.forEach(word => {
         if (t.includes(word)) {
           profileScore += 3;
           found.push('maturity / relationship signal');
         }
       });
 
-      negatives.forEach(word => {
+      PHRASES.defensiveProfile.forEach(word => {
         if (t.includes(word)) {
           profileScore -= 9;
           riskScore += 38;
@@ -1093,7 +1403,7 @@
         }
       });
 
-      generic.forEach(word => {
+      PHRASES.genericProfile.forEach(word => {
         if (t.includes(word)) {
           profileScore -= 4;
           clarityScore -= 4;
@@ -1109,21 +1419,23 @@
         why.push('The profile is short, so it reveals less personality and gives fewer conversation hooks.');
       }
 
-      if (t.length > 110) {
-        clarityScore += 5;
-      }
-
+      if (t.length > 110) clarityScore += 5;
       if (t.includes('looking for')) {
         directnessScore += 8;
         found.push('clear intention');
         why.push('It communicates what the person wants, which improves clarity and directness.');
+      }
+      if (breakdown.specificity > 10) {
+        profileScore += 4;
+        found.push('concrete hooks');
+        why.push('The profile includes details that make it easier for someone to start a conversation.');
       }
 
       profileScore = clamp(Math.round(profileScore), 20, 96);
       clarityScore = clamp(Math.round(clarityScore), 15, 95);
       directnessScore = clamp(Math.round(directnessScore), 20, 95);
 
-      const confidence = confidenceFromScore(72, found.length);
+      const confidence = confidenceFromSignals({ matchedSignals: found.length, textLength: t.length, specificity: breakdown.specificity });
       const risk = chooseRisk(riskScore);
 
       let tone = 'Open / social';
@@ -1140,8 +1452,8 @@
         meaning = 'This profile has decent foundations, but it could become much stronger with a bit more specificity and personality.';
       }
 
-      const whyText = why.length
-        ? why.join(' ')
+      const whyTextCombined = why.length
+        ? [...new Set(why)].join(' ')
         : 'The score is based on specificity, warmth, clarity of intent, and whether the profile feels inviting instead of generic or defensive.';
 
       const patterns = found.length ? [...new Set(found)].join(' • ') : 'no strong profile patterns detected';
@@ -1160,13 +1472,14 @@
         risk,
         meaning,
         patterns,
-        whyText,
+        whyText: whyTextCombined,
         profileScore,
         replies: [
           { tag: 'Bio tip', text: 'Add one concrete detail someone can easily reply to, like a ritual, favorite place, or funny opinion.' },
           { tag: 'Improve vibe', text: 'Try to sound warm and specific rather than impressive or filtered. Real beats polished.' },
           { tag: 'Hook idea', text: 'End with a conversation hook, like: “Tell me your most controversial coffee opinion.”' }
-        ]
+        ],
+        breakdown
       };
     }
 
@@ -1175,23 +1488,30 @@
       riskPill.className = 'pill ' + risk.toLowerCase();
     }
 
+    function renderBreakdown(breakdown) {
+      warmthScore.textContent = breakdown ? `${breakdown.warmth}%` : '—';
+      avoidanceScore.textContent = breakdown ? `${breakdown.avoidance}%` : '—';
+      specificityScore.textContent = breakdown ? `${breakdown.specificity}%` : '—';
+      pressureScore.textContent = breakdown ? `${breakdown.pressure}%` : '—';
+    }
+
     function renderReplies(replies) {
       replyList.innerHTML = '';
-      replies.forEach(reply => {
+      replies.forEach((reply, index) => {
         const el = document.createElement('div');
         el.className = 'reply';
         el.innerHTML =
-          '<div class="reply-tag">' + escapeHtml(reply.tag) + '</div>' +
-          escapeHtml(reply.text);
+          '<div class="reply-head">' +
+            '<div class="reply-tag">' + escapeHtml(reply.tag) + '</div>' +
+            '<button class="reply-copy" type="button" data-index="' + index + '">Copy</button>' +
+          '</div>' +
+          '<div>' + escapeHtml(reply.text) + '</div>';
         replyList.appendChild(el);
       });
     }
 
     function renderSingle(result, context) {
-      resultTitle.textContent = context === 'business'
-        ? 'Business message analysis'
-        : 'Message analysis';
-
+      resultTitle.textContent = context === 'business' ? 'Business message analysis' : 'Message analysis';
       toneValue.textContent = result.tone;
       interestValue.textContent = result.interestLabel + ' (' + result.interestScore + '%)';
       confidenceValue.textContent = result.confidence + '%';
@@ -1204,20 +1524,23 @@
       whyText.textContent = result.whyText;
       renderRisk(result.risk);
       renderReplies(result.replies);
-
+      renderBreakdown(result.breakdown);
       comparisonBlock.classList.add('hidden');
       profileBlock.classList.add('hidden');
     }
 
     function renderCompare(result, context) {
-      resultTitle.textContent = context === 'business'
-        ? 'Business message comparison'
-        : 'Message comparison';
-
+      resultTitle.textContent = context === 'business' ? 'Business message comparison' : 'Message comparison';
       const avgConfidence = Math.round((result.a.confidence + result.b.confidence) / 2);
       const avgInterest = Math.round((result.a.interestScore + result.b.interestScore) / 2);
       const avgDirectness = Math.round((result.a.directnessScore + result.b.directnessScore) / 2);
       const avgClarity = Math.round((result.a.clarityScore + result.b.clarityScore) / 2);
+      const avgBreakdown = {
+        warmth: Math.round((result.a.breakdown.warmth + result.b.breakdown.warmth) / 2),
+        avoidance: Math.round((result.a.breakdown.avoidance + result.b.breakdown.avoidance) / 2),
+        specificity: Math.round((result.a.breakdown.specificity + result.b.breakdown.specificity) / 2),
+        pressure: Math.round((result.a.breakdown.pressure + result.b.breakdown.pressure) / 2)
+      };
 
       toneValue.textContent = result.a.tone + ' vs ' + result.b.tone;
       interestValue.textContent = 'Avg ' + avgInterest + '%';
@@ -1226,19 +1549,12 @@
       emotionValue.textContent = result.a.emotion + ' / ' + result.b.emotion;
       directnessValue.textContent = 'Avg ' + avgDirectness + '%';
       clarityValue.textContent = 'Avg ' + avgClarity + '%';
-
-      meaningText.textContent =
-        'Message A: ' + result.a.meaning + ' Message B: ' + result.b.meaning;
-
-      patternsText.textContent =
-        'A: ' + result.a.patterns + ' | B: ' + result.b.patterns;
-
-      whyText.textContent =
-        'The comparison looks at relative openness, directness, clarity, and red-flag patterns across both messages.';
-
+      meaningText.textContent = 'Message A: ' + result.a.meaning + ' Message B: ' + result.b.meaning;
+      patternsText.textContent = 'A: ' + result.a.patterns + ' | B: ' + result.b.patterns;
+      whyText.textContent = 'The comparison looks at relative openness, directness, clarity, and red-flag patterns across both messages.';
       renderRisk(result.overallRisk);
       renderReplies(buildReplies(context, result.b.interestScore, result.overallRisk, result.b.tone));
-
+      renderBreakdown(avgBreakdown);
       comparisonText.textContent = result.comparison;
       comparisonBlock.classList.remove('hidden');
       profileBlock.classList.add('hidden');
@@ -1246,7 +1562,6 @@
 
     function renderProfile(result) {
       resultTitle.textContent = 'Dating profile analysis';
-
       toneValue.textContent = result.tone;
       interestValue.textContent = result.profileScore + '/100';
       confidenceValue.textContent = result.confidence + '%';
@@ -1259,7 +1574,7 @@
       whyText.textContent = result.whyText;
       renderRisk(result.risk);
       renderReplies(result.replies);
-
+      renderBreakdown(result.breakdown);
       profileText.textContent = 'Profile attractiveness score: ' + result.profileScore + '/100';
       profileBlock.classList.remove('hidden');
       comparisonBlock.classList.add('hidden');
@@ -1275,6 +1590,10 @@
         'Emotion: ' + emotionValue.textContent,
         'Directness: ' + directnessValue.textContent,
         'Clarity: ' + clarityValue.textContent,
+        'Warmth: ' + warmthScore.textContent,
+        'Avoidance: ' + avoidanceScore.textContent,
+        'Specificity: ' + specificityScore.textContent,
+        'Pressure: ' + pressureScore.textContent,
         'Likely meaning: ' + meaningText.textContent,
         'Detected patterns: ' + patternsText.textContent,
         'Why this result: ' + whyText.textContent,
@@ -1285,41 +1604,65 @@
         lines.push('- ' + reply.innerText.replace(/\n/g, ' '));
       });
 
-      if (!comparisonBlock.classList.contains('hidden')) {
-        lines.push('Comparison insight: ' + comparisonText.textContent);
-      }
-
-      if (!profileBlock.classList.contains('hidden')) {
-        lines.push(profileText.textContent);
-      }
-
+      if (!comparisonBlock.classList.contains('hidden')) lines.push('Comparison insight: ' + comparisonText.textContent);
+      if (!profileBlock.classList.contains('hidden')) lines.push(profileText.textContent);
       return lines.join('\n');
+    }
+
+    async function safeCopy(text, successLabel) {
+      try {
+        await navigator.clipboard.writeText(text);
+        setStatus(successLabel || 'Copied.');
+        return true;
+      } catch {
+        return false;
+      }
     }
 
     async function copyResult() {
       const text = getPlainTextResult();
-      try {
-        await navigator.clipboard.writeText(text);
-        copyBox.textContent = 'Copied result:\n\n' + text;
-      } catch (error) {
-        copyBox.textContent = 'Clipboard access failed. Copy manually:\n\n' + text;
-      }
+      const ok = await safeCopy(text, 'Result copied.');
+      copyBox.textContent = (ok ? 'Copied result:\n\n' : 'Clipboard access failed. Copy manually:\n\n') + text;
       copyBox.classList.remove('hidden');
     }
 
-    async function copyShareText() {
-      const shareText =
-        'Intentify analysis\n\n' +
-        getPlainTextResult() +
-        '\n\nTry it here: ' + window.location.href;
-
-      try {
-        await navigator.clipboard.writeText(shareText);
-        copyBox.textContent = 'Copied share text:\n\n' + shareText;
-      } catch (error) {
-        copyBox.textContent = 'Clipboard access failed. Copy manually:\n\n' + shareText;
+    async function shareAnalysis() {
+      const shareText = 'Intentify analysis\n\n' + getPlainTextResult() + '\n\nTry it here: ' + window.location.href;
+      if (navigator.share) {
+        try {
+          await navigator.share({ title: 'Intentify analysis', text: shareText, url: window.location.href });
+          setStatus('Share dialog opened.');
+          return;
+        } catch {}
       }
+      const ok = await safeCopy(shareText, 'Share text copied.');
+      copyBox.textContent = (ok ? 'Copied share text:\n\n' : 'Clipboard access failed. Copy manually:\n\n') + shareText;
       copyBox.classList.remove('hidden');
+    }
+
+    function exportJson() {
+      if (!latestResult) return;
+      const payload = {
+        exportedAt: new Date().toISOString(),
+        mode: modeEl.value,
+        context: contextEl.value,
+        input: {
+          message1: message1El.value,
+          message2: message2El.value
+        },
+        result: latestResult,
+        summary: getPlainTextResult()
+      };
+      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'intentify-analysis.json';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+      setStatus('JSON exported.');
     }
 
     function escapeHtml(str) {
@@ -1331,6 +1674,81 @@
         .replaceAll("'", '&#039;');
     }
 
+    function applyExample(example) {
+      modeEl.value = example.mode;
+      contextEl.value = example.context;
+      syncMode();
+      message1El.value = example.text1 || '';
+      message2El.value = example.text2 || '';
+      updateCounters();
+      persistState();
+      setStatus('Example loaded.');
+    }
+
+    function fillRandomExample() {
+      const item = randomExamples[Math.floor(Math.random() * randomExamples.length)];
+      applyExample(item);
+    }
+
+    function clearAll() {
+      message1El.value = '';
+      message2El.value = '';
+      updateCounters();
+      copyBox.classList.add('hidden');
+      copyBox.textContent = '';
+      emptyState.classList.remove('hidden');
+      resultState.classList.add('hidden');
+      latestResult = null;
+      persistState();
+      renderBreakdown(null);
+      setStatus('Cleared.');
+      message1El.focus();
+    }
+
+    function persistState() {
+      const snapshot = {
+        mode: modeEl.value,
+        context: contextEl.value,
+        text1: message1El.value,
+        text2: message2El.value
+      };
+      localStorage.setItem(STORAGE_KEYS.state, JSON.stringify(snapshot));
+    }
+
+    function restoreState() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEYS.state);
+        if (!raw) return false;
+        const saved = JSON.parse(raw);
+        if (!saved || typeof saved !== 'object') return false;
+        if (saved.mode) modeEl.value = saved.mode;
+        if (saved.context) contextEl.value = saved.context;
+        if (typeof saved.text1 === 'string') message1El.value = saved.text1;
+        if (typeof saved.text2 === 'string') message2El.value = saved.text2;
+        syncMode();
+        updateCounters();
+        return true;
+      } catch {
+        return false;
+      }
+    }
+
+    function applyTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem(STORAGE_KEYS.theme, theme);
+      themeBtn.textContent = theme === 'light' ? 'Dark mode' : 'Light mode';
+    }
+
+    function initTheme() {
+      const savedTheme = localStorage.getItem(STORAGE_KEYS.theme);
+      if (savedTheme === 'light' || savedTheme === 'dark') {
+        applyTheme(savedTheme);
+      } else {
+        const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+        applyTheme(prefersLight ? 'light' : 'dark');
+      }
+    }
+
     function runAnalyze() {
       const mode = modeEl.value;
       const context = contextEl.value;
@@ -1339,11 +1757,13 @@
 
       if (!text1) {
         alert('Paste a message or profile first.');
+        message1El.focus();
         return;
       }
 
       if (mode === 'compare' && !text2) {
         alert('Paste the second message too.');
+        message2El.focus();
         return;
       }
 
@@ -1351,10 +1771,10 @@
       copyBox.textContent = '';
       setStatus('Analyzing...', true);
       decodeBtn.disabled = true;
+      persistState();
 
       setTimeout(() => {
         let result;
-
         if (mode === 'single') {
           result = analyzeSingle(text1, context);
           renderSingle(result, context);
@@ -1366,19 +1786,32 @@
           renderProfile(result);
         }
 
+        latestResult = result;
         emptyState.classList.add('hidden');
         resultState.classList.remove('hidden');
         decodeBtn.disabled = false;
         setStatus('Analysis complete.');
-      }, 850);
+      }, 250);
     }
 
     modeEl.addEventListener('change', syncMode);
+    contextEl.addEventListener('change', persistState);
+    message1El.addEventListener('input', () => { updateCounters(); persistState(); });
+    message2El.addEventListener('input', () => { updateCounters(); persistState(); });
     decodeBtn.addEventListener('click', runAnalyze);
     clearBtn.addEventListener('click', clearAll);
     randomBtn.addEventListener('click', fillRandomExample);
     copyBtn.addEventListener('click', copyResult);
-    shareBtn.addEventListener('click', copyShareText);
+    shareBtn.addEventListener('click', shareAnalysis);
+    exportBtn.addEventListener('click', exportJson);
+    themeBtn.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme') || 'dark';
+      applyTheme(current === 'dark' ? 'light' : 'dark');
+    });
+    scrollToAnalyzerBtn.addEventListener('click', () => {
+      document.getElementById('main').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      message1El.focus();
+    });
 
     document.querySelectorAll('.chip').forEach(btn => {
       btn.addEventListener('click', () => {
@@ -1387,8 +1820,34 @@
       });
     });
 
-    syncMode();
-    applyExample(examplePool.dating1);
+    replyList.addEventListener('click', async (event) => {
+      const button = event.target.closest('.reply-copy');
+      if (!button) return;
+      const index = Number(button.dataset.index);
+      if (!latestResult || !replyList.children[index]) return;
+      const text = replyList.children[index].innerText.replace(/^Copy\s*/, '').replace(/^.*?\n/, '');
+      const ok = await safeCopy(text, 'Reply copied.');
+      if (!ok) {
+        copyBox.textContent = 'Clipboard access failed. Copy manually:\n\n' + text;
+        copyBox.classList.remove('hidden');
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if ((event.ctrlKey || event.metaKey) && event.key === 'Enter') {
+        event.preventDefault();
+        runAnalyze();
+      }
+      if (event.key === 'Escape') {
+        setStatus('');
+      }
+    });
+
+    initTheme();
+    const restored = restoreState();
+    if (!restored) applyExample(examplePool.dating1);
+    updateCounters();
   </script>
 </body>
 </html>
+EOF
