@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://thedarkduke33.github.io/intentify/sitemap.xml
