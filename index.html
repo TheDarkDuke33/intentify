@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Intentify — Decode the real meaning behind messages</title>
-  <meta name="description" content="Analyze messages, emails, and dating bios. Detect tone, intent, red flags, clarity, and get smart reply suggestions — entirely in your browser." />
-  <meta name="keywords" content="message analyzer, dating message analyzer, text meaning analyzer, conversation analyzer, dating bio analyzer, email analyzer, tone detector, intent detector" />
+  <title>Intentify — Find out what a text message actually means</title>
+  <meta name="description" content="Paste a message and see the likely tone, intent, red flags, clarity, and smart reply suggestions — privately in your browser." />
+  <meta name="keywords" content="message analyzer, dating message analyzer, text meaning analyzer, conversation analyzer, email analyzer, tone detector, intent detector" />
   <meta name="author" content="TheDarkDuke33" />
   <meta name="robots" content="index,follow" />
   <meta name="theme-color" content="#7a5cff" />
@@ -16,12 +16,12 @@
 
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://thedarkduke33.github.io/intentify/" />
-  <meta property="og:title" content="Intentify — Decode the real meaning behind messages" />
-  <meta property="og:description" content="Analyze messages, emails, and dating bios. Detect tone, intent, red flags, and get smart reply suggestions." />
+  <meta property="og:title" content="Intentify — Find out what a text message actually means" />
+  <meta property="og:description" content="Paste a message and get a fast estimate of tone, intent, red flags, and likely meaning." />
   <meta property="og:image" content="https://thedarkduke33.github.io/intentify/preview.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Intentify — Decode the real meaning behind messages" />
-  <meta name="twitter:description" content="Analyze messages, emails, and dating bios. Detect tone, intent, red flags, and get smart reply suggestions." />
+  <meta name="twitter:title" content="Intentify — Find out what a text message actually means" />
+  <meta name="twitter:description" content="Paste a message and get a fast estimate of tone, intent, red flags, and likely meaning." />
   <meta name="twitter:image" content="https://thedarkduke33.github.io/intentify/preview.png" />
 
   <script type="application/ld+json">
@@ -32,7 +32,7 @@
     "applicationCategory": "CommunicationApplication",
     "operatingSystem": "Web",
     "url": "https://thedarkduke33.github.io/intentify/",
-    "description": "A lightweight browser-based tool that helps decode the meaning behind messages, emails, and dating bios.",
+    "description": "A browser-based tool that estimates the likely meaning behind messages, emails, and dating bios.",
     "offers": {
       "@type": "Offer",
       "price": "0",
@@ -114,7 +114,7 @@
       justify-content: space-between;
       align-items: center;
       gap: 12px;
-      margin-bottom: 16px;
+      margin-bottom: 18px;
       flex-wrap: wrap;
     }
 
@@ -144,12 +144,7 @@
       flex-wrap: wrap;
     }
 
-    .hero {
-      text-align: center;
-      margin-bottom: 22px;
-    }
-
-    .badge, .hero-points span, .tag, .mini-tag {
+    .badge, .hero-points span, .tag, .mini-tag, .trust-item {
       display: inline-flex;
       align-items: center;
       gap: 8px;
@@ -162,37 +157,15 @@
       backdrop-filter: blur(10px);
     }
 
-    h1 {
-      margin: 12px 0 12px;
-      font-size: clamp(40px, 7vw, 76px);
-      line-height: 0.97;
-      letter-spacing: -0.05em;
-    }
-
-    .hero-sub {
-      margin: 0 auto;
-      max-width: 900px;
-      color: var(--muted);
-      font-size: clamp(17px, 2.2vw, 22px);
-      line-height: 1.65;
-    }
-
-    .hero-points {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 18px;
-    }
-
-    .quick-proof {
+    .hero {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      margin: 26px 0 14px;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 18px;
+      align-items: stretch;
+      margin-bottom: 20px;
     }
 
-    .proof-card, .card, .footer-card, .faq-item, .launch-box {
+    .hero-main, .hero-demo, .card, .faq-item, .footer-card {
       background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
       border: 1px solid var(--line);
       border-radius: var(--radius);
@@ -201,9 +174,122 @@
       backdrop-filter: blur(10px);
     }
 
-    .proof-card {
+    .hero-main {
+      padding: 24px;
+    }
+
+    h1 {
+      margin: 12px 0 12px;
+      font-size: clamp(38px, 6vw, 70px);
+      line-height: 0.98;
+      letter-spacing: -0.05em;
+    }
+
+    .hero-sub {
+      margin: 0;
+      max-width: 800px;
+      color: var(--muted);
+      font-size: clamp(17px, 2vw, 21px);
+      line-height: 1.65;
+    }
+
+    .hero-points {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .hero-note {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .trust-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    .hero-demo {
+      padding: 18px;
+      display: grid;
+      gap: 12px;
+      align-content: start;
+    }
+
+    .demo-title {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .demo-input, .demo-output, .empty-box, .block, .mini-feature, .proof-card, .example-card, .reply, .stat, .mini, .score-card {
+      background: var(--panel-2);
+      border: 1px solid var(--line);
+      border-radius: 18px;
       padding: 16px;
-      text-align: left;
+    }
+
+    .demo-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .demo-message {
+      font-size: 17px;
+      line-height: 1.55;
+      font-weight: 600;
+    }
+
+    .demo-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .demo-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid var(--line);
+    }
+
+    .demo-summary {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 14px;
+    }
+
+    .quick-proof {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin: 0 0 18px;
     }
 
     .proof-card strong {
@@ -212,7 +298,7 @@
       font-size: 16px;
     }
 
-    .proof-card p {
+    .proof-card p, .mini-feature p, .empty-box p, .block p, .footer-copy, .small-note, .footnote, .counter {
       margin: 0;
       line-height: 1.65;
       color: var(--muted);
@@ -244,7 +330,7 @@
     .control-grid { grid-template-columns: 1fr 1fr; }
     .feature-grid { grid-template-columns: repeat(3, 1fr); }
     .example-grid { grid-template-columns: repeat(3, 1fr); margin-top: 18px; }
-    .footer-grid { grid-template-columns: 1.3fr 1fr 1fr; }
+    .footer-grid { grid-template-columns: repeat(3, 1fr); }
 
     label {
       display: block;
@@ -278,12 +364,6 @@
     }
 
     .hidden { display: none !important; }
-
-    .input-meta, .small-note, .launch-copy, .footnote, .counter {
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.55;
-    }
 
     .input-meta {
       display: flex;
@@ -369,26 +449,6 @@
       50% { opacity: 1; transform: scale(1.05); }
     }
 
-    .empty-box, .block, .mini-feature {
-      background: rgba(12,18,38,0.82);
-      background: var(--panel-2);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 16px;
-    }
-
-    .empty-box h3, .block h3, .mini-feature h3 {
-      margin: 0 0 10px;
-      font-size: 16px;
-      color: inherit;
-    }
-
-    .empty-box p, .block p, .mini-feature p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.65;
-    }
-
     .result-head {
       display: flex;
       justify-content: space-between;
@@ -429,13 +489,6 @@
     .mini-grid { grid-template-columns: repeat(3, 1fr); }
     .score-grid { grid-template-columns: repeat(4, 1fr); }
 
-    .stat, .mini, .score-card {
-      background: var(--panel-2);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 14px;
-    }
-
     .stat-key, .mini-key {
       font-size: 12px;
       color: var(--muted);
@@ -470,19 +523,10 @@
       transition: width 0.35s ease;
     }
 
-    .reply-list, .example-list {
+    .reply-list {
       display: grid;
       gap: 10px;
       margin-top: 10px;
-    }
-
-    .reply, .example-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 13px 14px;
-      color: var(--text);
-      line-height: 1.58;
     }
 
     .reply-head {
@@ -536,10 +580,7 @@
     }
 
     .example-card .mini-tag { margin-bottom: 10px; }
-
-    .section {
-      margin-top: 18px;
-    }
+    .section { margin-top: 18px; }
 
     .footer-wrap {
       margin-top: 24px;
@@ -547,7 +588,7 @@
       gap: 18px;
     }
 
-    .footer-card, .launch-box, .faq-item { padding: 20px; }
+    .footer-card, .faq-item { padding: 20px; }
 
     .faq-item summary {
       cursor: pointer;
@@ -564,10 +605,6 @@
       margin-top: 12px;
     }
 
-    .footnote {
-      margin-top: 12px;
-    }
-
     .visually-hidden {
       position: absolute;
       width: 1px;
@@ -581,7 +618,7 @@
     }
 
     @media (max-width: 1024px) {
-      .grid, .feature-grid, .example-grid, .footer-grid, .quick-proof { grid-template-columns: 1fr; }
+      .hero, .grid, .feature-grid, .example-grid, .footer-grid, .quick-proof { grid-template-columns: 1fr; }
       .stats, .mini-grid, .score-grid { grid-template-columns: 1fr 1fr; }
     }
 
@@ -589,10 +626,11 @@
       .control-grid, .stats, .mini-grid, .score-grid { grid-template-columns: 1fr; }
       .app { width: min(1180px, calc(100% - 18px)); }
       body { padding-top: 14px; }
-      .card-inner, .footer-card, .launch-box, .faq-item { padding: 16px; }
+      .card-inner, .footer-card, .faq-item, .hero-main, .hero-demo { padding: 16px; }
       .btn { width: 100%; }
       .top-actions { width: 100%; }
       .top-actions .btn { width: auto; flex: 1 1 160px; }
+      .hero-actions .btn { flex: 1 1 180px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -620,37 +658,74 @@
 
       <div class="top-actions">
         <button id="themeBtn" class="btn btn-subtle" type="button" aria-label="Toggle theme">Toggle theme</button>
-        <button id="scrollToAnalyzerBtn" class="btn btn-secondary" type="button">Open analyzer</button>
       </div>
     </header>
 
     <section class="hero" aria-labelledby="heroTitle">
-      <div class="badge">✨ Intentify beta</div>
-      <h1 id="heroTitle">Decode the hidden meaning behind any message.</h1>
-      <p class="hero-sub">
-        Paste a message, email, or dating bio. Intentify estimates tone, intent, emotional signals, directness, clarity, and possible red flags — then suggests replies that fit the situation.
-      </p>
-      <div class="hero-points" aria-label="Key benefits">
-        <span>Detect tone and intent</span>
-        <span>Spot hidden red flags</span>
-        <span>Get smart reply suggestions</span>
+      <div class="hero-main">
+        <div class="badge">Paste a message. See the likely intent.</div>
+        <h1 id="heroTitle">Find out what a text message actually means.</h1>
+        <p class="hero-sub">
+          Intentify estimates tone, intent, emotional signals, red flags, and likely meaning — then suggests replies that fit the situation. Everything runs privately in your browser.
+        </p>
+
+        <div class="hero-points" aria-label="Key benefits">
+          <span>Decode mixed signals</span>
+          <span>Spot soft rejection</span>
+          <span>Get reply suggestions</span>
+        </div>
+
+        <div class="hero-actions">
+          <button id="scrollToAnalyzerBtn" class="btn btn-primary" type="button">Try a message now</button>
+          <button id="loadHeroExampleBtn" class="btn btn-secondary" type="button">Load example</button>
+        </div>
+
+        <div class="hero-note">
+          Best for dating texts, mixed signals, soft rejections, short replies, and cautious business messages.
+        </div>
+
+        <div class="trust-row" aria-label="Trust indicators">
+          <span class="trust-item">No signup</span>
+          <span class="trust-item">No API required</span>
+          <span class="trust-item">Runs in your browser</span>
+        </div>
       </div>
 
-      <div class="quick-proof" aria-label="Examples preview">
-        <article class="proof-card">
-          <strong>Dating excuse</strong>
-          <p>“I’m really busy this week maybe another time.” → Low receptiveness, avoidant tone, polite distancing.</p>
-        </article>
-        <article class="proof-card">
-          <strong>Business email</strong>
-          <p>“Let’s revisit this next quarter.” → Professional, low urgency, likely postponement rather than immediate interest.</p>
-        </article>
-        <article class="proof-card">
-          <strong>Dating bio</strong>
-          <p>Profiles are scored for warmth, clarity, hooks, and defensive phrasing so you can improve them fast.</p>
-        </article>
-      </div>
+      <aside class="hero-demo" aria-label="Instant demo">
+        <p class="demo-title">Instant example</p>
+        <div class="demo-input">
+          <span class="demo-label">Message</span>
+          <div class="demo-message">“I'm busy this week haha maybe another time.”</div>
+        </div>
+        <div class="demo-output">
+          <div class="demo-pills">
+            <span class="demo-pill">Interest: Low</span>
+            <span class="demo-pill">Tone: Avoidant</span>
+            <span class="demo-pill">Risk: Medium</span>
+          </div>
+          <p class="demo-summary">Likely meaning: polite distancing. Not hostile, but probably low momentum and weak intent to move things forward right now.</p>
+        </div>
+        <div class="demo-output">
+          <span class="demo-label">Why it works</span>
+          <p class="demo-summary">The wording delays commitment, avoids a concrete next step, and softens the message with casual politeness.</p>
+        </div>
+      </aside>
     </section>
+
+    <div class="quick-proof" aria-label="Examples preview">
+      <article class="proof-card">
+        <strong>“haha maybe another time”</strong>
+        <p>Usually reads as low commitment or soft rejection unless a specific next step follows.</p>
+      </article>
+      <article class="proof-card">
+        <strong>“let’s see”</strong>
+        <p>Usually reads as uncertainty, weak intent, or a passive delay rather than clear enthusiasm.</p>
+      </article>
+      <article class="proof-card">
+        <strong>“sure”</strong>
+        <p>Can mean interest, boredom, or politeness — context and directness matter more than the word alone.</p>
+      </article>
+    </div>
 
     <main id="main" class="grid">
       <section class="card" aria-labelledby="analyzerTitle">
@@ -675,7 +750,7 @@
                   <option value="compare">Compare Two Messages</option>
                   <option value="profile">Dating Profile Analyzer</option>
                 </select>
-                <div id="modeHelp" class="small-note">Compare is best when choosing between two similar messages.</div>
+                <div id="modeHelp" class="small-note">Start with Single Message for the clearest first result.</div>
               </div>
             </div>
 
@@ -683,7 +758,7 @@
               <label for="message1">Message / Text</label>
               <textarea id="message1" placeholder="Paste the message, email, or dating bio here..." maxlength="4000" aria-describedby="message1Meta"></textarea>
               <div class="input-meta" id="message1Meta">
-                <span>Nothing is uploaded. Everything runs in your browser.</span>
+                <span>Private by default. Nothing is uploaded.</span>
                 <span class="counter" id="message1Count">0 / 4000</span>
               </div>
             </div>
@@ -698,7 +773,7 @@
             </div>
 
             <div class="button-row">
-              <button id="decodeBtn" class="btn btn-primary" type="button">Decode</button>
+              <button id="decodeBtn" class="btn btn-primary" type="button">Analyze message</button>
               <button id="clearBtn" class="btn btn-secondary" type="button">Clear</button>
               <button id="randomBtn" class="btn btn-ghost" type="button">Try random example</button>
             </div>
@@ -708,26 +783,26 @@
             <div>
               <div class="small-note" style="margin-bottom:8px;">Quick examples</div>
               <div class="chips" role="group" aria-label="Example presets">
-                <button class="chip" type="button" data-example="dating1">Dating excuse</button>
+                <button class="chip" type="button" data-example="dating1">Soft rejection</button>
                 <button class="chip" type="button" data-example="dating2">Mixed interest</button>
-                <button class="chip" type="button" data-example="business1">Soft rejection</button>
+                <button class="chip" type="button" data-example="business1">Business delay</button>
                 <button class="chip" type="button" data-example="profile1">Dating bio</button>
-                <button class="chip" type="button" data-example="compare1">Compare messages</button>
+                <button class="chip" type="button" data-example="compare1">Compare replies</button>
               </div>
             </div>
 
             <div class="feature-grid section" aria-label="Key features">
               <div class="mini-feature">
-                <h3>Instant results</h3>
-                <p>No signup, no API, no waiting. Works on static hosting.</p>
+                <h3>Fast first answer</h3>
+                <p>Paste one message and get a likely reading in seconds.</p>
               </div>
               <div class="mini-feature">
                 <h3>Privacy first</h3>
-                <p>Analysis runs locally in the browser. No text is stored on a server.</p>
+                <p>Analysis runs locally in the browser. No login and no server storage.</p>
               </div>
               <div class="mini-feature">
-                <h3>Shareable output</h3>
-                <p>Copy results, export JSON, and share analysis text in one click.</p>
+                <h3>Reply help</h3>
+                <p>Get suggested replies that match the tone and situation.</p>
               </div>
             </div>
           </div>
@@ -741,11 +816,11 @@
             <div class="empty-box">
               <h3>Ready to decode</h3>
               <p>
-                Choose a mode, paste your text, and click <strong>Decode</strong>. You’ll get tone, receptiveness, confidence, emotion, directness, clarity, detected patterns, score breakdown, explanation, and reply suggestions.
+                Paste a message and click <strong>Analyze message</strong>. You’ll get tone, likely intent, clarity, directness, confidence, red-flag risk, score breakdown, explanation, and suggested replies.
               </p>
             </div>
-            <div class="footnote">
-              Best for testing, launch validation, and a free browser-first MVP.
+            <div class="footnote" style="margin-top:12px;">
+              Best first test: try a short dating reply like “haha maybe another time”.
             </div>
           </div>
 
@@ -850,56 +925,45 @@
     <section class="section" aria-labelledby="examplesTitle">
       <div class="card">
         <div class="card-inner">
-          <h2 class="section-title" id="examplesTitle">How people use Intentify</h2>
+          <h2 class="section-title" id="examplesTitle">Common use cases</h2>
           <div class="example-grid">
             <article class="example-card">
               <span class="mini-tag">Dating</span>
               <strong>“I’m really busy this week maybe another time.”</strong>
-              <div class="small-note">Typical reading: polite distancing, low commitment, weak next-step clarity.</div>
+              <div class="small-note">Typical reading: polite distancing, weak next-step clarity, low current momentum.</div>
             </article>
             <article class="example-card">
               <span class="mini-tag">Business</span>
               <strong>“Let’s revisit this next quarter when priorities are clearer.”</strong>
-              <div class="small-note">Typical reading: low urgency, professional soft decline, delayed priority.</div>
+              <div class="small-note">Typical reading: professional soft decline or strategic postponement with low urgency.</div>
             </article>
             <article class="example-card">
               <span class="mini-tag">Profile</span>
               <strong>“Gym, coffee, sarcasm, and spontaneous trips.”</strong>
-              <div class="small-note">Typical reading: decent energy, but needs stronger specifics and a conversation hook.</div>
+              <div class="small-note">Typical reading: decent energy, but stronger specifics and a conversation hook would help.</div>
             </article>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="footer-wrap" aria-label="Launch info and footer">
-      <div class="launch-box">
-        <strong>Launch-ready checklist</strong>
-        <div class="launch-copy">This build includes SEO metadata, accessibility improvements, local persistence, deterministic scoring, export tools, better examples, FAQ, privacy messaging, and share support.</div>
-        <div class="inline-list">
-          <span class="tag">No API required</span>
-          <span class="tag">GitHub Pages ready</span>
-          <span class="tag">Accessible controls</span>
-          <span class="tag">Mobile friendly</span>
-        </div>
-      </div>
-
+    <section class="footer-wrap" aria-label="Footer info">
       <div class="footer-grid">
         <div class="footer-card">
           <h3 style="margin-top:0;">About Intentify</h3>
-          <p class="launch-copy">
-            Intentify is a lightweight browser-based message analysis tool for testing, validation, and early launch. It estimates intent using language patterns, not psychology or certainty.
+          <p class="footer-copy">
+            Intentify is a lightweight browser-based message analysis tool for testing, validation, and early launch. It estimates likely intent using wording patterns, not certainty.
           </p>
         </div>
         <div class="footer-card">
           <h3 style="margin-top:0;">Privacy</h3>
-          <p class="launch-copy">
+          <p class="footer-copy">
             Your text stays in your browser. The app does not require login and does not send your message to a paid model or external API.
           </p>
         </div>
         <div class="footer-card">
           <h3 style="margin-top:0;">Disclaimer</h3>
-          <p class="launch-copy">
+          <p class="footer-copy">
             Intentify provides interpretation based on wording patterns. It is not legal, psychological, or professional advice.
           </p>
         </div>
@@ -930,7 +994,7 @@
 
   <script>
     const STORAGE_KEYS = {
-      state: 'intentify_state_v2',
+      state: 'intentify_state_v3',
       theme: 'intentify_theme_v1'
     };
 
@@ -951,6 +1015,7 @@
     const resultState = document.getElementById('resultState');
     const themeBtn = document.getElementById('themeBtn');
     const scrollToAnalyzerBtn = document.getElementById('scrollToAnalyzerBtn');
+    const loadHeroExampleBtn = document.getElementById('loadHeroExampleBtn');
 
     const resultTitle = document.getElementById('resultTitle');
     const riskPill = document.getElementById('riskPill');
@@ -984,7 +1049,7 @@
       dating1: {
         mode: 'single',
         context: 'dating',
-        text1: "I'm really busy this week maybe another time."
+        text1: "I'm really busy this week haha maybe another time."
       },
       dating2: {
         mode: 'single',
@@ -1808,6 +1873,11 @@
       applyTheme(current === 'dark' ? 'light' : 'dark');
     });
     scrollToAnalyzerBtn.addEventListener('click', () => {
+      document.getElementById('main').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      message1El.focus();
+    });
+    loadHeroExampleBtn.addEventListener('click', () => {
+      applyExample(examplePool.dating1);
       document.getElementById('main').scrollIntoView({ behavior: 'smooth', block: 'start' });
       message1El.focus();
     });
